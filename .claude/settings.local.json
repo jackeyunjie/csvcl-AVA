@@ -1,7 +1,13 @@
 {
   "permissions": {
     "allow": [
-      "Bash(dir:*)"
+      "Bash(dir:*)",
+      "Bash(python:*)",
+      "WebSearch",
+      "Bash(gh api *)",
+      "Bash(\"d:\\\\qoder\\\\csvcl - AVA\\\\.venv\\\\Scripts\\\\python.exe\" -m pip install requests -q)",
+      "Read(//d/Program Files/Ava Trade MT5 Terminal/**)",
+      "Read(//d/Program Files/**)"
     ],
     "deny": [],
     "ask": []

@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI盯盘预警工具 — 合规架构落地方案调研报告</title>
+    <style>
+        :root {
+            --mck-blue: #003A70;
+            --mck-dark: #1A1A1A;
+            --mck-gray: #4A4A4A;
+            --mck-light-gray: #F5F6F8;
+            --mck-white: #FFFFFF;
+            --mck-accent: #0066A1;
+            --mck-border: #E0E2E5;
+            --mck-green: #1B7A3D;
+            --mck-red: #C0392B;
+            --mck-amber: #D4880F;
+            --mck-teal: #0E6B6E;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.10);
+            --radius-sm: 6px;
+            --radius-md: 10px;
+            --radius-lg: 16px;
+            --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', 'Helvetica Neue', sans-serif;
+            background: #F0F1F4;
+            color: var(--mck-dark);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ===== TOP BAR ===== */
+        .top-bar {
+            background: var(--mck-blue);
+            color: #FFFFFF;
+            padding: 0 40px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 13px;
+            letter-spacing: 0.3px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        }
+        .top-bar .brand {
+            font-weight: 700;
+            font-size: 15px;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .top-bar .brand .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #FFFFFF;
+            opacity: 0.9;
+        }
+        .top-bar .meta {
+            opacity: 0.85;
+            font-size: 12px;
+            display: flex;
+            gap: 24px;
+        }
+        .top-bar .meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* ===== MAIN CONTAINER ===== */
+        .main-container {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 32px 24px 60px;
+        }
+
+        /* ===== COVER SECTION ===== */
+        .cover {
+            background: var(--mck-white);
+            border-radius: var(--radius-lg);
+            padding: 48px 52px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow-lg);
+            border-left: 6px solid var(--mck-blue);
+            position: relative;
+            overflow: hidden;
+        }
+        .cover::after {
+            content: '';
+            position: absolute;
+            top: -60px;
+            right: -60px;
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            background: var(--mck-light-gray);
+            opacity: 0.5;
+            pointer-events: none;
+        }
+        .cover .label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--mck-accent);
+            font-weight: 700;
+            margin-bottom: 12px;
+            position: relative;
+            z-index: 1;
+        }
+        .cover h1 {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--mck-blue);
+            margin-bottom: 8px;
+            position: relative;
+            z-index: 1;
+            letter-spacing: -0.3px;
+            line-height: 1.25;
+        }
+        .cover .subtitle {
+            font-size: 16px;
+            color: var(--mck-gray);
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+            letter-spacing: 0.2px;
+        }
+        .cover .meta-row {
+            display: flex;
+            gap: 28px;
+            flex-wrap: wrap;
+            font-size: 13px;
+            color: var(--mck-gray);
+            position: relative;
+            z-index: 1;
+        }
+        .cover .meta-row .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .cover .meta-row .meta-item strong {
+            color: var(--mck-dark);
+        }
+
+        /* ===== SECTION ===== */
+        .section {
+            background: var(--mck-white);
+            border-radius: var(--radius-lg);
+            padding: 36px 40px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+        .section:hover {
+            box-shadow: var(--shadow-md);
+        }
+        .section h2 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--mck-blue);
+            margin-bottom: 6px;
+            letter-spacing: -0.2px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .section h2 .num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--mck-blue);
+            color: #fff;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        .section .section-subtitle {
+            font-size: 14px;
+            color: var(--mck-gray);
+            margin-bottom: 20px;
+            padding-left: 42px;
+        }
+
+        /* ===== EXECUTIVE SUMMARY ===== */
+        .exec-summary {
+            background: linear-gradient(135deg, #F8F9FB 0%, #EEF1F5 100%);
+            border: 1px solid var(--mck-border);
+            border-radius: var(--radius-md);
+            padding: 28px 32px;
+            margin-bottom: 20px;
+        }
+        .exec-summary .big-number {
+            font-size: 56px;
+            font-weight: 800;
+            color: var(--mck-blue);
+            line-height: 1;
+            letter-spacing: -2px;
+        }
+        .exec-summary .big-number-label {
+            font-size: 13px;
+            color: var(--mck-gray);
+            letter-spacing: 0.3px;
+            margin-top: 2px;
+        }
+
+        /* ===== KPI ROW ===== */
+        .kpi-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+        .kpi-card {
+            background: var(--mck-white);
+            border-radius: var(--radius-md);
+            padding: 22px 24px;
+            box-shadow: var(--shadow-sm);
+            border-top: 4px solid var(--mck-blue);
+            transition: var(--transition);
+        }
+        .kpi-card.warn {
+            border-top-color: var(--mck-red);
+        }
+        .kpi-card.amber {
+            border-top-color: var(--mck-amber);
+        }
+        .kpi-card.teal {
+            border-top-color: var(--mck-teal);
+        }
+        .kpi-card .kpi-value {
+            font-size: 34px;
+            font-weight: 800;
+            color: var(--mck-dark);
+            line-height: 1;
+            letter-spacing: -1px;
+        }
+        .kpi-card .kpi-label {
+            font-size: 13px;
+            color: var(--mck-gray);
+            margin-top: 4px;
+            letter-spacing: 0.2px;
+        }
+        .kpi-card .kpi-detail {
+            font-size: 11px;
+            color: var(--mck-accent);
+            margin-top: 6px;
+            font-weight: 600;
+        }
+
+        /* ===== TABLE ===== */
+        .mck-table-wrap {
+            overflow-x: auto;
+            margin: 16px 0;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--mck-border);
+        }
+        table.mck-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+            min-width: 700px;
+        }
+        table.mck-table thead th {
+            background: var(--mck-blue);
+            color: #fff;
+            padding: 12px 14px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 12px;
+            letter-spacing: 0.3px;
+            white-space: nowrap;
+        }
+        table.mck-table tbody td {
+            padding: 11px 14px;
+            border-bottom: 1px solid var(--mck-border);
+            vertical-align: top;
+            color: var(--mck-dark);
+        }
+        table.mck-table tbody tr:nth-child(even) {
+            background: #FAFBFC;
+        }
+        table.mck-table tbody tr:hover {
+            background: #F0F4F8;
+        }
+        .badge {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+            white-space: nowrap;
+        }
+        .badge-green {
+            background: #D4EDDA;
+            color: #155724;
+        }
+        .badge-amber {
+            background: #FFF3CD;
+            color: #856404;
+        }
+        .badge-red {
+            background: #F8D7DA;
+            color: #721C24;
+        }
+        .badge-blue {
+            background: #D1ECF1;
+            color: #0C5460;
+        }
+        .badge-gray {
+            background: #E9ECEF;
+            color: #495057;
+        }
+
+        /* ===== MATRIX / SIDE-BY-SIDE ===== */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 16px 0;
+        }
+        @media (max-width: 768px) {
+            .two-col {
+                grid-template-columns: 1fr;
+            }
+            .cover {
+                padding: 28px 24px;
+            }
+            .cover h1 {
+                font-size: 24px;
+            }
+            .section {
+                padding: 24px 20px;
+            }
+            .kpi-row {
+                grid-template-columns: 1fr 1fr;
+            }
+            .roadmap-phases {
+                grid-template-columns: 1fr !important;
+            }
+            .top-bar {
+                padding: 0 16px;
+                font-size: 11px;
+            }
+        }
+        .comparison-col {
+            background: var(--mck-light-gray);
+            border-radius: var(--radius-md);
+            padding: 20px 22px;
+            border: 1px solid var(--mck-border);
+        }
+        .comparison-col h4 {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--mck-blue);
+            letter-spacing: -0.2px;
+        }
+        .comparison-col.danger {
+            border-left: 4px solid var(--mck-red);
+            background: #FEF5F5;
+        }
+        .comparison-col.safe {
+            border-left: 4px solid var(--mck-green);
+            background: #F4FAF6;
+        }
+
+        /* ===== ROADMAP ===== */
+        .roadmap-phases {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin: 16px 0;
+        }
+        .roadmap-phase {
+            background: var(--mck-white);
+            border-radius: var(--radius-md);
+            padding: 20px 22px;
+            border: 1px solid var(--mck-border);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        .roadmap-phase:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+        .roadmap-phase .phase-num {
+            font-size: 40px;
+            font-weight: 800;
+            color: var(--mck-blue);
+            opacity: 0.12;
+            position: absolute;
+            top: 8px;
+            right: 16px;
+            line-height: 1;
+            pointer-events: none;
+        }
+        .roadmap-phase h4 {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--mck-dark);
+            margin-bottom: 4px;
+            position: relative;
+            z-index: 1;
+        }
+        .roadmap-phase .phase-time {
+            font-size: 12px;
+            color: var(--mck-accent);
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .roadmap-phase ul {
+            list-style: none;
+            padding: 0;
+            font-size: 12px;
+            color: var(--mck-gray);
+            position: relative;
+            z-index: 1;
+        }
+        .roadmap-phase ul li {
+            padding: 3px 0;
+            padding-left: 16px;
+            position: relative;
+        }
+        .roadmap-phase ul li::before {
+            content: '›';
+            position: absolute;
+            left: 0;
+            color: var(--mck-blue);
+            font-weight: 700;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        /* ===== CALLOUT ===== */
+        .callout {
+            border-radius: var(--radius-md);
+            padding: 18px 22px;
+            margin: 16px 0;
+            font-size: 13px;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            line-height: 1.5;
+        }
+        .callout-danger {
+            background: #FEF5F5;
+            border: 1px solid #F5C6CB;
+            color: #721C24;
+        }
+        .callout-info {
+            background: #F0F7FA;
+            border: 1px solid #BEE5EB;
+            color: #0C5460;
+        }
+        .callout-warn {
+            background: #FFFDF5;
+            border: 1px solid #FFE69C;
+            color: #6D5200;
+        }
+        .callout .callout-icon {
+            font-size: 20px;
+            flex-shrink: 0;
+            line-height: 1;
+        }
+
+        /* ===== FOOTER ===== */
+        .report-footer {
+            background: var(--mck-blue);
+            color: rgba(255, 255, 255, 0.85);
+            border-radius: var(--radius-md);
+            padding: 20px 28px;
+            font-size: 12px;
+            letter-spacing: 0.2px;
+            margin-top: 24px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: center;
+        }
+        .report-footer strong {
+            color: #FFFFFF;
+        }
+
+        /* ===== PRINT ===== */
+        @media print {
+            body {
+                background: #fff;
+            }
+            .section {
+                box-shadow: none;
+                border: 1px solid #ddd;
+                break-inside: avoid;
+            }
+            .top-bar {
+                position: static;
+                background: #003A70 !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Fade-in animation */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(16px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .section,
+        .kpi-card,
+        .roadmap-phase {
+            animation: fadeUp 0.5s ease forwards;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==================== TOP BAR ==================== -->
+    <div class="top-bar">
+        <div class="brand">
+            <span class="dot"></span> 深度调研报告
+        </div>
+        <div class="meta">
+            <span>📋 A+B+C 三轮整合</span>
+            <span>📅 调研截止：2026年4月</span>
+            <span>🔒 机密 · 仅供内部</span>
+        </div>
+    </div>
+
+    <!-- ==================== MAIN CONTAINER ==================== -->
+    <div class="main-container">
+
+        <!-- COVER -->
+        <div class="cover">
+            <div class="label">CONFIDENTIAL · 合规架构落地方案</div>
+            <h1>AI盯盘预警工具<br>合规架构落地方案</h1>
+            <p class="subtitle">基于法规风险全景 × 同业规避方法 × 落地路线图的整合调研</p>
+            <div class="meta-row">
+                <div class="meta-item"><strong>范围：</strong>国内A股 · 智能投顾 / AI盯盘 / 荐股软件 / 量化信号工具</div>
+                <div class="meta-item"><strong>方法论：</strong>渠道加法 × 交叉验证</div>
+                <div class="meta-item"><strong>报告模式：</strong>证据型</div>
+            </div>
+        </div>
+
+        <!-- KPI ROW -->
+        <div class="kpi-row">
+            <div class="kpi-card">
+                <div class="kpi-value">4</div>
+                <div class="kpi-label">可行牌照路径</div>
+                <div class="kpi-detail">推荐路径A：持牌合作</div>
+            </div>
+            <div class="kpi-card warn">
+                <div class="kpi-value">7年9月</div>
+                <div class="kpi-label">上海案实控人刑期</div>
+                <div class="kpi-detail">非法经营罪 · 罚金500万</div>
+            </div>
+            <div class="kpi-card amber">
+                <div class="kpi-value">6项</div>
+                <div class="kpi-label">同花顺违规映射</div>
+                <div class="kpi-detail">2024年11月 · 浙江证监局</div>
+            </div>
+            <div class="kpi-card teal">
+                <div class="kpi-value">8个</div>
+                <div class="kpi-label">合规基础设施</div>
+                <div class="kpi-detail">系统+组织双轨设计</div>
+            </div>
+        </div>
+
+        <!-- EXECUTIVE SUMMARY -->
+        <div class="section">
+            <h2><span class="num">Ⅰ</span> 执行摘要</h2>
+            <p class="section-subtitle">Executive Summary — 结论先行</p>
+            <div class="exec-summary">
+                <p style="font-size:15px;margin-bottom:14px;color:var(--mck-dark);">
+                    <strong>核心建议：</strong>你的AI盯盘预警工具在现行法律环境下，<strong>以"持牌机构合作"（路径A）为主路径</strong>，以"功能降级MVP"（路径C）为过渡策略，远期视融资评估"牌照收购"（路径B）。灰色运营（路径D）已被上海刑事判例、平台执法和应用商店审核收紧三重封堵，<strong>不做任何推荐</strong>。
+                </p>
+                <p style="font-size:13px;color:var(--mck-gray);">
+                    本报告整合三轮调研——A轮（法规风险全景·7条高可信发现）、B轮（同业规避方法·6条高可信发现）、C轮（合规落地方案·8大模块）——形成从"风险识别→对标学习→方案设计"的完整闭环。方案实施前须经执业律师审核。
+                </p>
+            </div>
+        </div>
+
+        <!-- SECTION II: 四路径评估 -->
+        <div class="section">
+            <h2><span class="num">Ⅱ</span> 牌照路径评估</h2>
+            <p class="section-subtitle">四条路径的可行性、时间窗口与代价</p>
+            <div class="mck-table-wrap">
+                <table class="mck-table">
+                    <thead>
+                        <tr>
+                            <th>路径</th>
+                            <th>安全等级</th>
+                            <th>核心逻辑</th>
+                            <th style="width:100px;">时间窗口</th>
+                            <th style="width:110px;">成本区间</th>
+                            <th>建议</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>A. 持牌机构合作</strong></td>
+                            <td><span class="badge badge-green">🟢 推荐主路径</span></td>
+                            <td>以技术服务商身份嵌入持牌投顾机构产品体系，投顾建议由持牌方输出</td>
+                            <td>3-6个月</td>
+                            <td>BD成本+律师费+收入分成</td>
+                            <td>✅ 当前阶段优先推进</td>
+                        </tr>
+                        <tr>
+                            <td><strong>B. 收购存量牌照</strong></td>
+                            <td><span class="badge badge-amber">🟡 远期备选</span></td>
+                            <td>通过FA/并购律师收购现有投顾牌照持有机构控股权</td>
+                            <td>6-18个月</td>
+                            <td>千万-亿级</td>
+                            <td>⏳ A轮成功后融资再评估</td>
+                        </tr>
+                        <tr>
+                            <td><strong>C. 功能降级</strong></td>
+                            <td><span class="badge badge-amber">🟡 过渡策略</span></td>
+                            <td>裁减"买卖点推荐"，仅保留技术指标展示+NLP公告解析，定位信息工具</td>
+                            <td>1-3个月</td>
+                            <td>产品改造开发成本</td>
+                            <td>🔧 合作落地前MVP过渡</td>
+                        </tr>
+                        <tr>
+                            <td><strong>D. 灰色运营</strong></td>
+                            <td><span class="badge badge-red">🔴 不推荐</span></td>
+                            <td>以"模拟盘/个人观点"名义规避监管</td>
+                            <td>—</td>
+                            <td>刑事风险</td>
+                            <td>❌ 上海案7年9月+罚金500万</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- SECTION III: 功能设计边界 -->
+        <div class="section">
+            <h2><span class="num">Ⅲ</span> 功能设计边界</h2>
+            <p class="section-subtitle">三大功能的合规红线——逐功能"安全设计 vs 危险设计"</p>
+            <div class="two-col">
+                <div class="comparison-col safe">
+                    <h4>✅ 安全设计</h4>
+                    <p style="font-size:12px;color:var(--mck-dark);margin-bottom:8px;"><strong>技术指标预警：</strong>"MACD出现金叉信号""RSI进入超卖区间"（纯数据描述，无方向性动词）</p>
+                    <p style="font-size:12px;color:var(--mck-dark);margin-bottom:8px;"><strong>NLP解析公告：</strong>"营收XX亿，同比+XX%"（结构化提取+历史对比，标注"AI生成"和数据来源）</p>
+                    <p style="font-size:12px;color:var(--mck-dark);"><strong>择时信号：</strong>仅在持牌合作框架下，经投顾审核+实名签名后输出，附带完整依据披露</p>
+                </div>
+                <div class="comparison-col danger">
+                    <h4>❌ 危险设计</h4>
+                    <p style="font-size:12px;color:var(--mck-dark);margin-bottom:8px;"><strong>技术指标预警：</strong>"MACD金叉，建议买入""RSI超卖，抄底机会"（方向性建议措辞）</p>
+                    <p style="font-size:12px;color:var(--mck-dark);margin-bottom:8px;"><strong>NLP解析公告：</strong>"营收超预期，利好""强烈看好"（加入价值判断+无数据来源标注）</p>
+                    <p style="font-size:12px;color:var(--mck-dark);"><strong>择时信号：</strong>AI直接输出"建议买入XX股"——无投顾审核、无依据、无留痕、无风险测评</p>
+                </div>
+            </div>
+            <div class="callout callout-warn">
+                <span class="callout-icon">⚠️</span>
+                <span><strong>核心警示：</strong>免责声明≠免罚金牌。上海案中法院未因存在"免责声明"而减轻刑责。功能实质重于名义抬头——监管判断 = 功能效果 > 产品名称 > 技术路径。</span>
+            </div>
+        </div>
+
+        <!-- SECTION IV: 同业对标矩阵 -->
+        <div class="section">
+            <h2><span class="num">Ⅳ</span> 同业合规对标矩阵</h2>
+            <p class="section-subtitle">四类代表性产品的合规策略全景对比</p>
+            <div class="mck-table-wrap">
+                <table class="mck-table">
+                    <thead>
+                        <tr>
+                            <th>合规维度</th>
+                            <th>九方智投<br><span style="font-weight:400;font-size:11px;">持牌标杆</span></th>
+                            <th>券商AI选股<br><span style="font-weight:400;font-size:11px;">强牌照</span></th>
+                            <th>同花顺问财<br><span style="font-weight:400;font-size:11px;">持牌+AI</span></th>
+                            <th>雪球<br><span style="font-weight:400;font-size:11px;">无投顾牌照</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>牌照策略</strong></td>
+                            <td>自有投顾牌照（ZX0023）</td>
+                            <td>证券公司牌照（投顾内嵌）</td>
+                            <td>自有投顾牌照（子公司）</td>
+                            <td>仅基金销售牌照</td>
+                        </tr>
+                        <tr>
+                            <td><strong>功能定位措辞</strong></td>
+                            <td>AI智能投顾</td>
+                            <td>"量化选股工具"</td>
+                            <td>"AI投资助手"</td>
+                            <td>"持仓信息提醒服务"</td>
+                        </tr>
+                        <tr>
+                            <td><strong>免责声明</strong></td>
+                            <td>标准合规话术</td>
+                            <td>"不构成投资建议"</td>
+                            <td>每输出必附+AI标注</td>
+                            <td>"不应被视为投资建议"</td>
+                        </tr>
+                        <tr>
+                            <td><strong>内容审核</strong></td>
+                            <td>AI监测官+AI巡查官+人工</td>
+                            <td>券商合规部审核</td>
+                            <td>投顾审核+留痕</td>
+                            <td>用户UGC自负责任</td>
+                        </tr>
+                        <tr>
+                            <td><strong>组织隔离</strong></td>
+                            <td>投顾实体独立+集团支持</td>
+                            <td>券商持牌主体内</td>
+                            <td>子公司持牌+母公司科技</td>
+                            <td>无隔离（无投顾业务）</td>
+                        </tr>
+                        <tr>
+                            <td><strong>留痕机制</strong></td>
+                            <td>100%全链路留痕</td>
+                            <td>投顾业务合规标配</td>
+                            <td>投顾业务合规标配</td>
+                            <td>信息服务留痕</td>
+                        </tr>
+                        <tr>
+                            <td><strong>被罚历史</strong></td>
+                            <td>未查到公开处罚</td>
+                            <td>部分投顾被罚（非AI）</td>
+                            <td>子公司2024年被罚</td>
+                            <td>2015年主动清理无牌荐股</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- SECTION V: 同花顺6项违规映射 -->
+        <div class="section">
+            <h2><span class="num">Ⅴ</span> 合规必建模块：同花顺6项违规的逆向映射</h2>
+            <p class="section-subtitle">2024年11月浙江证监局处罚——反向推导合规体系的6个必建模块</p>
+            <div class="mck-table-wrap">
+                <table class="mck-table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>违规事项</th>
+                            <th>反向映射 → 合规必建模块</th>
+                            <th>对你的产品的直接意义</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>①</td>
+                            <td>无证人员提供投顾服务</td>
+                            <td><strong>人员注册与资质管理</strong></td>
+                            <td>输出方向性建议的人员必须持牌注册</td>
+                        </tr>
+                        <tr>
+                            <td>②</td>
+                            <td>未有效留痕客户服务过程</td>
+                            <td><strong>全链路服务留痕系统</strong></td>
+                            <td>AI每条建议、每次交互必须可追溯</td>
+                        </tr>
+                        <tr>
+                            <td>③</td>
+                            <td>营销宣传不规范</td>
+                            <td><strong>营销内容审核机制</strong></td>
+                            <td>禁止"稳赚""包赚不赔"等承诺性表述</td>
+                        </tr>
+                        <tr>
+                            <td>④</td>
+                            <td>建议未充分说明依据</td>
+                            <td><strong>建议依据披露机制</strong></td>
+                            <td>每条建议附带逻辑依据——基于什么模型/数据</td>
+                        </tr>
+                        <tr>
+                            <td>⑤</td>
+                            <td>未建立有效投诉处理机制</td>
+                            <td><strong>客户投诉处理闭环流程</strong></td>
+                            <td>正式受理→处理→反馈→留痕闭环</td>
+                        </tr>
+                        <tr>
+                            <td>⑥</td>
+                            <td>投顾人员多机构执业</td>
+                            <td><strong>从业人员兼职管控</strong></td>
+                            <td>署名投顾不得同时在多家机构执业</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="callout callout-info">
+                <span class="callout-icon">💡</span>
+                <span><strong>约牛警示（C轮发现）：</strong>合规系统 ≠ 合规。约牛证券咨询建了"智能合规中枢"（AI文档审查+直播监测+知识图谱），但仍因审核执行不到位接连被罚（2024年5月、2025年1月）。系统+组织必须双轨建设。</span>
+            </div>
+        </div>
+
+        <!-- SECTION VI: 组织架构 -->
+        <div class="section">
+            <h2><span class="num">Ⅵ</span> 组织架构设计</h2>
+            <p class="section-subtitle">法律实体隔离 + 责任归属方案（路径A合作架构）</p>
+            <div class="two-col">
+                <div class="comparison-col safe">
+                    <h4>你的科技公司（有限公司）</h4>
+                    <p style="font-size:12px;color:var(--mck-gray);margin-bottom:4px;"><strong>职责：</strong>算法研发 · 模型训练 · 数据处理 · 技术系统建设</p>
+                    <p style="font-size:12px;color:var(--mck-gray);margin-bottom:4px;"><strong>资质：</strong>无金融牌照要求（非金融业务）</p>
+                    <p style="font-size:12px;color:var(--mck-gray);"><strong>人员：</strong>工程师 · 数据科学家 · 产品经理 · 合规专员</p>
+                </div>
+                <div class="comparison-col safe">
+                    <h4>持牌合作机构（投顾牌照方）</h4>
+                    <p style="font-size:12px;color:var(--mck-gray);margin-bottom:4px;"><strong>职责：</strong>投顾服务运营 · 投顾人员管理 · 适当性管理 · 监管报告</p>
+                    <p style="font-size:12px;color:var(--mck-gray);margin-bottom:4px;"><strong>资质：</strong>《证券投资咨询业务资格证书》</p>
+                    <p style="font-size:12px;color:var(--mck-gray);"><strong>人员：</strong>持牌投顾人员 · 审核岗 · 客户服务岗</p>
+                </div>
+            </div>
+            <p style="font-size:13px;color:var(--mck-dark);margin-top:12px;"><strong>关键设计原则：</strong>AI信号 → 进入持牌机构审核系统 → 投顾人员实质审核/修改/签名 → 发布。合同须固化审核流程为刚性机制，科技公司不得绕过审核环节。</p>
+        </div>
+
+        <!-- SECTION VII: 分阶段路线图 -->
+        <div class="section">
+            <h2><span class="num">Ⅶ</span> 分阶段落地路线图</h2>
+            <p class="section-subtitle">总体推荐：路径C功能降级MVP过渡 → 同步推进路径A持牌合作 → 远期评估路径B</p>
+            <div class="roadmap-phases">
+                <div class="roadmap-phase">
+                    <div class="phase-num">0</div>
+                    <h4>法律验证</h4>
+                    <div class="phase-time">当月</div>
+                    <ul>
+                        <li>预约证券合规律师</li>
+                        <li>提交本报告逐模块验证</li>
+                        <li>获得专业评估和修改清单</li>
+                    </ul>
+                </div>
+                <div class="roadmap-phase">
+                    <div class="phase-num">1</div>
+                    <h4>MVP过渡期</h4>
+                    <div class="phase-time">第1-3个月</div>
+                    <ul>
+                        <li>裁减买卖点推荐功能</li>
+                        <li>Web端上线（仅指标+公告）</li>
+                        <li>留痕/审核/依据披露三条底线</li>
+                        <li>用户协议+免责声明初稿</li>
+                    </ul>
+                </div>
+                <div class="roadmap-phase">
+                    <div class="phase-num">2</div>
+                    <h4>合作推进期</h4>
+                    <div class="phase-time">第2-6个月（并行）</div>
+                    <ul>
+                        <li>BD触达持牌投顾机构</li>
+                        <li>准备合作方案</li>
+                        <li>律师起草/审核合作合同</li>
+                        <li>签署技术服务协议</li>
+                    </ul>
+                </div>
+                <div class="roadmap-phase">
+                    <div class="phase-num">3</div>
+                    <h4>全面上线期</h4>
+                    <div class="phase-time">第6-12个月</div>
+                    <ul>
+                        <li>恢复完整功能（投顾审核框架）</li>
+                        <li>以持牌机构名义上架应用商店</li>
+                        <li>六大基础设施全面建设</li>
+                        <li>AI算法可解释性文档完成</li>
+                    </ul>
+                </div>
+                <div class="roadmap-phase">
+                    <div class="phase-num">4</div>
+                    <h4>合规深化期</h4>
+                    <div class="phase-time">第12-18个月</div>
+                    <ul>
+                        <li>设立合规负责人岗位</li>
+                        <li>对标九方双层审核机制</li>
+                        <li>启动ISO 37301评估</li>
+                        <li>跟踪最新监管动态</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION VIII: 投入估算 -->
+        <div class="section">
+            <h2><span class="num">Ⅷ</span> 投入估算</h2>
+            <p class="section-subtitle">合规建设的关键投入项与优先级</p>
+            <div class="mck-table-wrap">
+                <table class="mck-table">
+                    <thead>
+                        <tr>
+                            <th>投入项</th>
+                            <th>金额范围</th>
+                            <th>时间窗口</th>
+                            <th>必要性</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>证券合规律师咨询（方案验证）</td>
+                            <td>2,000-5,000元/小时 × 2-3次</td>
+                            <td>当月</td>
+                            <td><span class="badge badge-red">🔴 必须</span></td>
+                        </tr>
+                        <tr>
+                            <td>合作合同律师费（起草+谈判）</td>
+                            <td>5-20万元</td>
+                            <td>第2-4个月</td>
+                            <td><span class="badge badge-red">🔴 必须</span></td>
+                        </tr>
+                        <tr>
+                            <td>留痕系统+审核工作流开发</td>
+                            <td>1-2名工程师 × 2-3个月</td>
+                            <td>第1-3个月</td>
+                            <td><span class="badge badge-red">🔴 必须</span></td>
+                        </tr>
+                        <tr>
+                            <td>行业峰会/培训参会</td>
+                            <td>2,000-5,000元/次 × 2-3次</td>
+                            <td>第4-12个月</td>
+                            <td><span class="badge badge-amber">🟡 推荐</span></td>
+                        </tr>
+                        <tr>
+                            <td>牌照收购（如走路径B）</td>
+                            <td>千万-亿级</td>
+                            <td>第18个月后</td>
+                            <td><span class="badge badge-blue">🟢 远期选项</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- SECTION IX: 结论 -->
+        <div class="section">
+            <h2><span class="num">Ⅸ</span> 结论与下一步行动</h2>
+            <p class="section-subtitle">三轮调研闭环的最终交付</p>
+            <div class="exec-summary">
+                <p style="font-size:15px;margin-bottom:10px;color:var(--mck-dark);">
+                    <strong>你的AI盯盘预警工具可行的合规落地路径：</strong>以<strong>"持牌机构合作"（路径A）</strong>为主路径，以<strong>"功能降级MVP"（路径C）</strong>为过渡策略，远期视融资情况评估<strong>"牌照收购"（路径B）</strong>。
+                </p>
+                <p style="font-size:13px;color:var(--mck-gray);margin-bottom:6px;"><strong>三条铁律：</strong>①买家推荐必须有投顾背书 ②必须全链路留痕 ③必须做依据披露</p>
+                <p style="font-size:13px;color:var(--mck-gray);margin-bottom:6px;"><strong>方案可靠度：</strong>A轮7条+B轮6条+C轮3条高可信发现交叉支撑。标注🟡的灰色地带结论需律师验证。</p>
+                <p style="font-size:13px;color:var(--mck-gray);"><strong>下一步：</strong>将A+B+C三轮报告打包，立即预约证券合规律师完成阶段零（法律验证），随后启动路线图。</p>
+            </div>
+            <div class="callout callout-danger" style="margin-top:12px;">
+                <span class="callout-icon">⚖️</span>
+                <span><strong>法律免责声明：</strong>本报告为调研成果整合与方案建议，不构成法律意见。方案实施前须经执业律师审核。所有合规策略的选择和落地均应由专业法律顾问基于具体情况出具正式意见。</span>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="report-footer">
+            <span><strong>A+B+C 三轮调研 · 完整交付</strong> | 法规风险全景 → 同业规避方法 → 合规落地方案</span>
+            <span>调研截止：2026年4月 · 证据型报告 · 机密</span>
+        </div>
+
+    </div>
+
+</body>
+</html>

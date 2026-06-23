@@ -1,0 +1,128 @@
+# MT4数据处理配置文件
+# 基于现有成熟系统的配置化改造
+
+# 基本信息
+name: "MT4数据自动处理系统"
+version: "1.0"
+description: "处理包含KVBt_@_D1字符的MT4 CSV文件"
+
+# 文件筛选配置
+file_selection:
+  # 文件名匹配模式
+  pattern: "KVBt_@_D1"
+  # 时间限制（分钟）
+  time_limit_minutes: 10
+  # 搜索路径
+  search_paths:
+    - "C:\\Users\\MECHREVO\\AppData\\Roaming\\MetaQuotes\\Terminal\\50D8083188871EAB17316B22F188CFF7\\MQL4\\Files"
+    - "D:\\MT4Data"  # 备用路径
+  # 文件扩展名
+  file_extensions: [".csv"]
+
+# 数据处理配置
+data_processing:
+  # 目标区域
+  target_range: "E2:G40"
+  # 截图区域
+  screenshot_range: "A1:M40"
+  # 列宽调整
+  column_width:
+    default: 12
+    special_columns:
+      B: 18  # B列宽度为其他列的1.5倍
+
+# 颜色标记规则
+color_rules:
+  red:
+    values: [2, 3, 4, 5, 6, 7]
+    background_color: "FFFF0000"  # 红色背景
+    font_color: "FF000000"        # 黑色字体
+  green:
+    values: [-2, -3, -4, -5, -6, -7]
+    background_color: "FF00FF00"  # 绿色背景
+    font_color: "FF000000"        # 黑色字体
+  yellow:
+    values: [8]
+    background_color: "FFFFFF00"  # 黄色背景
+    font_color: "FF000000"        # 黑色字体
+  light_red:
+    values: [10, 11, 12, 13, 14, 15]
+    background_color: "FFFFCCCC"  # 淡红色背景
+    font_color: "FF000000"        # 黑色字体
+  light_green:
+    values: [-10, -11, -12, -13, -14, -15]
+    background_color: "FFCCFFCC"  # 淡绿色背景
+    font_color: "FF000000"        # 黑色字体
+
+# 数据分析配置
+analysis:
+  # 分析器类型
+  analyzer_type: "mt4_analyzer"
+  # 分析规则
+  rules:
+    # 数据结构：每3行为一个品种
+    rows_per_group: 3
+    # 行含义：[今天, 昨天, 前天]
+    row_meanings: ["today", "yesterday", "day_before"]
+    # 监控的重要数值（由非这些数值变为这些数值）
+    important_values: [2, -2, 6, -6]
+    # 分析列（MN1, W1, D1对应E, F, G列）
+    analysis_columns: ["E", "F", "G"]
+    column_names: ["MN1", "W1", "D1"]
+
+# 图片生成配置
+image_generation:
+  # 图片格式
+  format: "jpg"  # 用户偏好JPG格式
+  # 图片质量
+  quality: 95
+  # 图片尺寸
+  size:
+    width: 1080
+    height: 1025
+  # 是否包含边框
+  include_borders: true
+  # 行号列号样式
+  header_style:
+    background_color: [220, 220, 220]  # 浅灰色
+    font_color: [0, 0, 0]              # 黑色
+    font_size: 10
+
+# 邮件发送配置
+email:
+  # 是否启用邮件发送
+  enabled: true
+  # 发送时间段
+  send_times:
+    start_time: "07:00"
+    end_time: "22:00"
+  # 收件人
+  recipients:
+    - "447372703@qq.com"
+    - "1300893414@qq.com"
+  # 邮件主题模板
+  subject_template: "MT4数据文件 - {date}"
+  # 邮件模板文件
+  template_file: "templates/mt4_email.html"
+  # 附件配置
+  attachments:
+    include_excel: true
+    include_screenshot: true
+    embed_images: true  # 图片嵌入正文
+
+# 输出文件配置
+output:
+  # Excel文件后缀
+  excel_suffix: "_MT4_colored.xlsx"
+  # 截图文件后缀
+  screenshot_suffix: "_MT4_screenshot.jpg"
+  # 输出目录
+  output_directory: "."
+  # 是否保留临时文件
+  keep_temp_files: false
+
+# 日志配置
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(levelname)s - %(message)s"
+  file: "logs/mt4_processor.log"

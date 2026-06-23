@@ -1,83 +1,148 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-调试单元格颜色信息
+调试颜色标注问题
+验证颜色标注是否正确保存到图片中
 """
 
+from csv_color_marker import CSVColorMarker
 import os
-from openpyxl import load_workbook
+import pandas as pd
+from openpyxl import Workbook
+from openpyxl.styles import PatternFill, Font
+import sys
 
-def debug_cell_colors():
-    """
-    调试单元格颜色信息
-    """
-    print("=== 单元格颜色调试 ===")
+def create_test_csv():
+    """创建测试CSV文件，包含所有可能的颜色值"""
+    print("创建测试CSV文件...")
     
-    # 查找最新的colored.xlsx文件
-    xlsx_files = [f for f in os.listdir('.') if f.endswith('_colored.xlsx')]
-    if not xlsx_files:
-        print("❌ 未找到Excel文件")
+    # 创建包含所有颜色值的测试数据
+    data = {
+        'A': ['Header', 'Red1', 'Red2', 'Red3', 'Red4', 'Red5', 'Red6', 
+              'LightRed1', 'LightRed2', 'LightRed3', 'LightRed4', 'LightRed5', 'LightRed6',
+              'Green1', 'Green2', 'Green3', 'Green4', 'Green5', 'Green6',
+              'LightGreen1', 'LightGreen2', 'LightGreen3', 'LightGreen4', 'LightGreen5', 'LightGreen6',
+              'Yellow'],
+        'B': ['Value', 'Test', 'Test', 'Test', 'Test', 'Test', 'Test',
+              'Test', 'Test', 'Test', 'Test', 'Test', 'Test',
+              'Test', 'Test', 'Test', 'Test', 'Test', 'Test',
+              'Test', 'Test', 'Test', 'Test', 'Test', 'Test',
+              'Test'],
+        'C': ['Description', 'Red color', 'Red color', 'Red color', 'Red color', 'Red color', 'Red color',
+              'Light red', 'Light red', 'Light red', 'Light red', 'Light red', 'Light red',
+              'Green color', 'Green color', 'Green color', 'Green color', 'Green color', 'Green color',
+              'Light green', 'Light green', 'Light green', 'Light green', 'Light green', 'Light green',
+              'Yellow color'],
+        'D': ['Test', 'Value', 'Value', 'Value', 'Value', 'Value', 'Value',
+              'Value', 'Value', 'Value', 'Value', 'Value', 'Value',
+              'Value', 'Value', 'Value', 'Value', 'Value', 'Value',
+              'Value', 'Value', 'Value', 'Value', 'Value', 'Value',
+              'Value'],
+        'E': ['E', 2, 3, 4, 5, 6, 7,
+              10, 11, 12, 13, 14, 15,
+              -2, -3, -4, -5, -6, -7,
+              -10, -11, -12, -13, -14, -15,
+              8],
+        'F': ['F', 2, 3, 4, 5, 6, 7,
+              10, 11, 12, 13, 14, 15,
+              -2, -3, -4, -5, -6, -7,
+              -10, -11, -12, -13, -14, -15,
+              8],
+        'G': ['G', 2, 3, 4, 5, 6, 7,
+              10, 11, 12, 13, 14, 15,
+              -2, -3, -4, -5, -6, -7,
+              -10, -11, -12, -13, -14, -15,
+              8]
+    }
+    
+    # 创建DataFrame
+    df = pd.DataFrame(data)
+    
+    # 保存为CSV
+    test_file = "test_color_debug.csv"
+    df.to_csv(test_file, index=False)
+    print(f"✅ 测试文件已创建: {test_file}")
+    
+    return test_file
+
+def test_color_marker():
+    """测试颜色标记功能"""
+    print("\n=== 测试颜色标记功能 ===")
+    
+    # 创建测试文件
+    test_file = create_test_csv()
+    
+    # 初始化颜色标记器
+    marker = CSVColorMarker()
+    
+    # 处理测试文件
+    print("\n处理测试文件...")
+    output_path = marker.process_csv_file(test_file)
+    
+    if output_path:
+        print(f"\n✅ 测试成功！")
+        print(f"📊 生成的Excel文件: {output_path}")
+        print(f"🖼️ 生成的图片: {os.path.splitext(output_path)[0].replace('_colored', '_full_table')}.png")
+        print("\n请检查生成的图片是否包含正确的颜色标注")
+        
+        # 尝试打开生成的Excel文件
+        try:
+            print("\n尝试打开Excel文件...")
+            import subprocess
+            import platform
+            
+            if platform.system() == 'Windows':
+                os.startfile(output_path)
+                print("✅ Excel文件已打开")
+            elif platform.system() == 'Darwin':  # macOS
+                subprocess.call(['open', output_path])
+                print("✅ Excel文件已打开")
+            else:  # Linux
+                subprocess.call(['xdg-open', output_path])
+                print("✅ Excel文件已打开")
+        except Exception as e:
+            print(f"❌ 无法自动打开Excel文件: {str(e)}")
+            print(f"请手动打开文件: {output_path}")
+    else:
+        print("❌ 测试失败！未能生成Excel文件")
+
+def verify_image_colors():
+    """验证图片中的颜色是否正确"""
+    print("\n=== 验证图片颜色 ===")
+    
+    # 查找最新的图片文件
+    import glob
+    image_files = glob.glob("*_full_table.png")
+    
+    if not image_files:
+        print("❌ 未找到图片文件")
         return
     
-    # 选择有最多颜色标记的文件
-    target_file = None
-    for file in xlsx_files:
-        if 'range' in file:
-            target_file = file
-            break
+    # 按修改时间排序，获取最新的图片
+    latest_image = max(image_files, key=os.path.getmtime)
+    print(f"找到最新图片: {latest_image}")
     
-    if not target_file:
-        target_file = xlsx_files[0]
-    
-    print(f"📁 检查文件: {target_file}")
-    
+    # 尝试打开图片
     try:
-        wb = load_workbook(target_file)
-        ws = wb.active
+        print("\n尝试打开图片...")
+        import subprocess
+        import platform
         
-        print(f"\n🔍 检查E2:G40区域的颜色信息...")
-        
-        found_colored_cells = 0
-        
-        # 检查E2:G40区域
-        for row in range(2, 41):
-            for col in range(5, 8):  # E, F, G列
-                cell = ws.cell(row=row, column=col)
-                cell_value = cell.value
-                
-                if cell_value is not None:
-                    # 检查填充颜色
-                    fill = cell.fill
-                    
-                    print(f"\n单元格 {chr(64+col)}{row} = {cell_value}")
-                    print(f"  Fill类型: {type(fill)}")
-                    print(f"  Fill对象: {fill}")
-                    
-                    if hasattr(fill, 'start_color'):
-                        print(f"  start_color: {fill.start_color}")
-                        if hasattr(fill.start_color, 'rgb'):
-                            print(f"  RGB值: {fill.start_color.rgb}")
-                            if fill.start_color.rgb and fill.start_color.rgb != 'FFFFFF':
-                                found_colored_cells += 1
-                        if hasattr(fill.start_color, 'index'):
-                            print(f"  索引值: {fill.start_color.index}")
-                    
-                    if hasattr(fill, 'fill_type'):
-                        print(f"  填充类型: {fill.fill_type}")
-                    
-                    # 检查字体颜色
-                    font = cell.font
-                    print(f"  字体颜色: {font.color}")
-                    
-                    if found_colored_cells >= 5:  # 只显示前5个有颜色的单元格
-                        break
-            if found_colored_cells >= 5:
-                break
-        
-        print(f"\n✅ 找到 {found_colored_cells} 个有颜色的单元格")
-        
+        if platform.system() == 'Windows':
+            os.startfile(latest_image)
+            print("✅ 图片已打开")
+        elif platform.system() == 'Darwin':  # macOS
+            subprocess.call(['open', latest_image])
+            print("✅ 图片已打开")
+        else:  # Linux
+            subprocess.call(['xdg-open', latest_image])
+            print("✅ 图片已打开")
     except Exception as e:
-        print(f"❌ 错误: {str(e)}")
+        print(f"❌ 无法自动打开图片: {str(e)}")
+        print(f"请手动打开图片: {latest_image}")
 
 if __name__ == "__main__":
-    debug_cell_colors()
+    print("=== 颜色标注调试工具 ===")
+    test_color_marker()
+    verify_image_colors()
+    print("\n调试完成！")

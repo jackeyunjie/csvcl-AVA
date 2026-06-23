@@ -30,7 +30,7 @@ class RealMT4DataProcessor:
         """
         # 默认MT4路径
         if mt4_path is None:
-            self.mt4_path = r"C:\Users\MECHREVO\AppData\Roaming\MetaQuotes\Terminal\1F7FB83FCE28CDC848B46CF4612D1D35\MQL4\Files"
+            self.mt4_path = r"C:\Users\MECHREVO\AppData\Roaming\MetaQuotes\Terminal\50D8083188871EAB17316B22F188CFF7\MQL4\Files"
         else:
             self.mt4_path = mt4_path
             
@@ -54,13 +54,48 @@ class RealMT4DataProcessor:
                 self.enable_email = False
         
         # 定义颜色映射
+        color_map = {
+            '00FF0000': (255, 0, 0),    # 红色背景
+            'FF0000': (255, 0, 0),      # 红色背景
+            '0000FF00': (0, 255, 0),    # 绿色背景
+            '00FF00': (0, 255, 0),      # 绿色背景
+            '00FFFF00': (255, 255, 0),  # 黄色背景
+            'FFFF00': (255, 255, 0),    # 黄色背景
+            '00FFCCCC': (255, 204, 204), # 淡红色背景
+            'FFCCCC': (255, 204, 204),   # 淡红色背景
+            '00CCFFCC': (204, 255, 204), # 淡绿色背景
+            'CCFFCC': (204, 255, 204),   # 淡绿色背景
+            'FFFFFF': (255, 255, 255),  # 白色背景
+            '00FFFFFF': (255, 255, 255),
+            '00000000': (255, 255, 255)
+        }
+        
+        # 定义颜色规则
         self.color_rules = {
             2: 'FF0000',    # 红色背景
+            3: 'FF0000',    # 红色背景
             4: 'FF0000',    # 红色背景
+            5: 'FF0000',    # 红色背景
             6: 'FF0000',    # 红色背景
+            7: 'FF0000',    # 红色背景
+            10: 'FFCCCC',   # 淡红色背景
+            11: 'FFCCCC',   # 淡红色背景
+            12: 'FFCCCC',   # 淡红色背景
+            13: 'FFCCCC',   # 淡红色背景
+            14: 'FFCCCC',   # 淡红色背景
+            15: 'FFCCCC',   # 淡红色背景
             -2: '00FF00',   # 绿色背景
+            -3: '00FF00',   # 绿色背景
             -4: '00FF00',   # 绿色背景
+            -5: '00FF00',   # 绿色背景
             -6: '00FF00',   # 绿色背景
+            -7: '00FF00',   # 绿色背景
+            -10: 'CCFFCC',  # 淡绿色背景
+            -11: 'CCFFCC',  # 淡绿色背景
+            -12: 'CCFFCC',  # 淡绿色背景
+            -13: 'CCFFCC',  # 淡绿色背景
+            -14: 'CCFFCC',  # 淡绿色背景
+            -15: 'CCFFCC',  # 淡绿色背景
             8: 'FFFF00'     # 黄色背景
         }
     
@@ -124,6 +159,13 @@ class RealMT4DataProcessor:
         try:
             print(f"\n=== 处理真实MT4数据 ===")
             print(f"📄 文件: {os.path.basename(file_path)}")
+            print(f"🎨 颜色规则:")
+            print(f"   🟥 红色背景: 2, 3, 4, 5, 6, 7")
+            print(f"   🟩 绿色背景: -2, -3, -4, -5, -6, -7")
+            print(f"   🟨 黄色背景: 8")
+            print(f"   🟪 淡红色背景: 10, 11, 12, 13, 14, 15")
+            print(f"   🟢 淡绿色背景: -10, -11, -12, -13, -14, -15")
+            print(f"   📍 目标区域: E2:G43")
             
             # 生成输出文件名
             base_name = os.path.splitext(os.path.basename(file_path))[0]
@@ -153,9 +195,9 @@ class RealMT4DataProcessor:
                 for r in dataframe_to_rows(df, index=False, header=True):
                     ws.append(r)
             
-            # 应用颜色格式到指定区域（E2:G40）
+            # 应用颜色格式到指定区域（E2:G43）
             if ws is not None:
-                colored_count = self.apply_color_formatting(df, ws, "E2:G40")
+                colored_count = self.apply_color_formatting(df, ws, "E2:G43")
                 print(f"   ✅ 颜色标记完成：共标记了 {colored_count} 个单元格")
                 
                 # 调整B列的列宽为其他列的1.5倍
@@ -168,12 +210,12 @@ class RealMT4DataProcessor:
             wb.save(excel_path)
             print(f"   ✅ Excel文件已保存: {excel_filename}")
             
-            # 第3步：生成A1:M40范围的截图
-            print(f"\n🔄 第3步：生成A1:M40范围截图...")
+            # 第3步：生成A1:M43范围的截图
+            print(f"\n🔄 第3步：生成A1:M43范围截图...")
             if ws is not None:
                 image_filename = f"{base_name}_MT4_screenshot.jpg"  # 改为JPG格式
                 image_path = os.path.join(os.path.dirname(__file__), image_filename)
-                self.save_range_as_image(ws, "A1:M40", image_path, include_headers=True, image_format="JPG")
+                self.save_range_as_image(ws, "A1:M43", image_path, include_headers=True, image_format="JPG")
                 print(f"   ✅ 截图已保存: {image_filename}")
             
             print(f"\n🎉 MT4数据处理完成！")
@@ -189,7 +231,7 @@ class RealMT4DataProcessor:
             traceback.print_exc()
             return None, None, []
     
-    def apply_color_formatting(self, df, worksheet, target_range="E2:G40"):
+    def apply_color_formatting(self, df, worksheet, target_range="E2:G43"):
         """
         对指定单元格区域应用颜色格式
         """
@@ -199,6 +241,8 @@ class RealMT4DataProcessor:
         # 创建颜色填充和字体对象
         color_fills = {}
         fonts = {}
+        
+        # 使用配置的颜色规则
         for value, color_code in self.color_rules.items():
             color_fills[value] = PatternFill(start_color=color_code, 
                                            end_color=color_code, 
@@ -218,12 +262,16 @@ class RealMT4DataProcessor:
                         # 尝试将值转换为数字
                         numeric_value = float(cell_value)
                         
-                        # 检查是否需要着色
-                        if numeric_value in self.color_rules:
-                            cell.fill = color_fills[numeric_value]
-                            cell.font = fonts[numeric_value]
-                            colored_count += 1
+                        # 解决浮点数精度问题：检查是否接近整数值
+                        if abs(numeric_value - round(numeric_value)) < 1e-10:
+                            int_value = int(round(numeric_value))
                             
+                            # 检查整数值是否在颜色规则中
+                            if int_value in self.color_rules:
+                                cell.fill = color_fills[int_value]
+                                cell.font = fonts[int_value]
+                                colored_count += 1
+                                
                 except (ValueError, TypeError):
                     # 如果不是数字，跳过
                     continue
@@ -284,6 +332,7 @@ class RealMT4DataProcessor:
     def analyze_data_changes(self, df):
         """
         分析数据变化，特别关注重要数值的变化
+        修改为统计由非-2, 2, -6, 6数字变为-2, 2, -6, 6的情况
         
         Args:
             df: 包含MT4数据的DataFrame
@@ -294,8 +343,8 @@ class RealMT4DataProcessor:
         try:
             print(f"\n🔍 === 数据变化分析 ===")
             
-            # 重要数值列表
-            important_values = [2, 6, -2, -6]
+            # 定义重要数值
+            important_values = [2, -2, 6, -6]
             
             # 需要分析的列（E、F、G对应MN1、W1、D1）
             analysis_columns = ['MN1', 'W1', 'D1']
@@ -319,9 +368,9 @@ class RealMT4DataProcessor:
                         today_value = today_row[col]
                         yesterday_value = yesterday_row[col]
                         
-                        # 检查是否变成了重要数值
+                        # 检查是否是由非重要数值变为重要数值
                         if (today_value in important_values and 
-                            yesterday_value != today_value):
+                            yesterday_value not in important_values):
                             
                             change_info = {
                                 'symbol': symbol,
@@ -343,7 +392,7 @@ class RealMT4DataProcessor:
             print(f"❌ 数据变化分析失败: {str(e)}")
             return []
     
-    def save_range_as_image(self, worksheet, range_str="A1:M40", output_path=None, include_headers=True, image_format="JPG"):
+    def save_range_as_image(self, worksheet, range_str="A1:M43", output_path=None, include_headers=True, image_format="JPG"):
         """将指定区域保存为图片，包含行号和列号"""
         try:
             print(f"   🖼️  正在生成 {range_str} 区域截图（{image_format}格式）...")
@@ -389,6 +438,10 @@ class RealMT4DataProcessor:
                 '00FF00': (0, 255, 0),      # 绿色背景
                 '00FFFF00': (255, 255, 0),  # 黄色背景
                 'FFFF00': (255, 255, 0),    # 黄色背景
+                '00FFCCCC': (255, 204, 204), # 淡红色背景
+                'FFCCCC': (255, 204, 204),   # 淡红色背景
+                '00CCFFCC': (204, 255, 204), # 淡绿色背景
+                'CCFFCC': (204, 255, 204),   # 淡绿色背景
                 'FFFFFF': (255, 255, 255),  # 白色背景
                 '00FFFFFF': (255, 255, 255),
                 '00000000': (255, 255, 255)
@@ -508,7 +561,7 @@ class RealMT4DataProcessor:
         print("📋 处理流程:")
         print("   1️⃣  查找并读取真实MT4 CSV文件")
         print("   2️⃣  生成Excel文件并应用颜色标记")
-        print("   3️⃣  生成A1:M40范围的完整截图")
+        print("   3️⃣  生成A1:M43范围的完整截图")
         if self.enable_email:
             print("   4️⃣  发送邮件报告")
         print("=" * 50)
@@ -546,7 +599,7 @@ class RealMT4DataProcessor:
             print(f"✅ 所有文件已按照完整流程处理:")
             print(f"   1️⃣  ✅ 真实CSV数据读取完成")
             print(f"   2️⃣  ✅ Excel文件生成并颜色标记完成") 
-            print(f"   3️⃣  ✅ A1:M40截图生成完成")
+            print(f"   3️⃣  ✅ A1:M43截图生成完成")
             
             # 发送邮件报告
             if self.enable_email and self.recipients:

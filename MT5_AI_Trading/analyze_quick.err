@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "D:\qoder\csvcl - AVA\MT5_AI_Trading\analyze_quick.py", line 3, in <module>
+    conn = duckdb.connect('data/h1_state.duckdb', read_only=True)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_duckdb.IOException: IO Error: Cannot open file "\\?\D:\qoder\csvcl - AVA\MT5_AI_Trading\data\h1_state.duckdb": 另一个程序正在使用此文件，进程无法访问。
+
+File is already open in 
+C:\Users\MECHREVO\AppData\Local\Programs\Python\Python312\python.exe (PID 29540)

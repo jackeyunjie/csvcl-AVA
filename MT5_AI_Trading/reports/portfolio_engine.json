@@ -1,0 +1,92 @@
+{
+  "generated_at": "2026-05-28T09:07:49.201221",
+  "strategies_total": 5,
+  "strategies_selected": 5,
+  "strategies_in_pool": 5,
+  "quality_scores": {
+    "S1_JPY_EURJPY": 1.1606,
+    "S2_JPY_USDJPY": 0.9284,
+    "S3_JPY_GBPJPY": 0.464,
+    "S4_STOCK_SCORE_NEG12": 5.6499,
+    "S5_FOREX_PATTERN_REVERSAL": 2.3401
+  },
+  "correlation_matrix": {
+    "S1_JPY_EURJPY": {
+      "S1_JPY_EURJPY": 1.0,
+      "S2_JPY_USDJPY": 0,
+      "S3_JPY_GBPJPY": 0,
+      "S4_STOCK_SCORE_NEG12": 0,
+      "S5_FOREX_PATTERN_REVERSAL": 0
+    },
+    "S2_JPY_USDJPY": {
+      "S1_JPY_EURJPY": 0,
+      "S2_JPY_USDJPY": 1.0,
+      "S3_JPY_GBPJPY": 0,
+      "S4_STOCK_SCORE_NEG12": 0,
+      "S5_FOREX_PATTERN_REVERSAL": 0
+    },
+    "S3_JPY_GBPJPY": {
+      "S1_JPY_EURJPY": 0,
+      "S2_JPY_USDJPY": 0,
+      "S3_JPY_GBPJPY": 1.0,
+      "S4_STOCK_SCORE_NEG12": 0,
+      "S5_FOREX_PATTERN_REVERSAL": 0
+    },
+    "S4_STOCK_SCORE_NEG12": {
+      "S1_JPY_EURJPY": 0,
+      "S2_JPY_USDJPY": 0,
+      "S3_JPY_GBPJPY": 0,
+      "S4_STOCK_SCORE_NEG12": 1.0,
+      "S5_FOREX_PATTERN_REVERSAL": 0
+    },
+    "S5_FOREX_PATTERN_REVERSAL": {
+      "S1_JPY_EURJPY": 0,
+      "S2_JPY_USDJPY": 0,
+      "S3_JPY_GBPJPY": 0,
+      "S4_STOCK_SCORE_NEG12": 0,
+      "S5_FOREX_PATTERN_REVERSAL": 1.0
+    }
+  },
+  "portfolio": [
+    {
+      "id": "S1_JPY_EURJPY",
+      "weight": 0.11,
+      "atr_pct": 0.9,
+      "lots": 25.9,
+      "status": "INCLUDED"
+    },
+    {
+      "id": "S2_JPY_USDJPY",
+      "weight": 0.088,
+      "atr_pct": 0.7,
+      "lots": 27.09,
+      "status": "INCLUDED"
+    },
+    {
+      "id": "S3_JPY_GBPJPY",
+      "weight": 0.044,
+      "atr_pct": 0.4,
+      "lots": 20.71,
+      "status": "INCLUDED"
+    },
+    {
+      "id": "S4_STOCK_SCORE_NEG12",
+      "weight": 0.536,
+      "atr_pct": 1.8,
+      "lots": 45.26,
+      "status": "INCLUDED"
+    },
+    {
+      "id": "S5_FOREX_PATTERN_REVERSAL",
+      "weight": 0.222,
+      "atr_pct": 2.6,
+      "lots": 16.91,
+      "status": "INCLUDED"
+    }
+  ],
+  "pool_stats": {
+    "total_trades": 4511,
+    "avg_ret_pct": 0.7390229189232298,
+    "win_rate": 56.75016626025271
+  }
+}

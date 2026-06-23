@@ -1,0 +1,106 @@
+# 配置文件模板
+# 复制此文件并修改相应参数来创建新的处理配置
+
+# ============== 基本信息 ==============
+name: "您的数据处理系统名称"
+version: "1.0"
+description: "描述您要处理的数据类型"
+
+# ============== 文件筛选配置 ==============
+file_selection:
+  # 文件名匹配模式（支持通配符）
+  pattern: "YourPattern_*"
+  # 时间限制（分钟）- 只处理N分钟内创建的文件
+  time_limit_minutes: 10
+  # 搜索路径列表
+  search_paths:
+    - "您的数据文件路径1"
+    - "您的数据文件路径2"
+  # 支持的文件格式
+  file_extensions: [".csv"]
+
+# ============== 数据处理配置 ==============
+data_processing:
+  # 需要颜色标记的区域（Excel格式，如A1:C10）
+  target_range: "A1:C10"
+  # 截图区域
+  screenshot_range: "A1:E15"
+  # 列宽设置
+  column_width:
+    default: 12            # 默认列宽
+    special_columns:       # 特殊列宽设置
+      A: 15
+      B: 20
+
+# ============== 颜色标记规则 ==============
+color_rules:
+  # 颜色名称（可自定义）
+  red:
+    values: [1, 2, 3]              # 触发此颜色的数值
+    background_color: "FFFF0000"   # 背景色（ARGB格式）
+    font_color: "FF000000"         # 字体色（ARGB格式）
+  green:
+    values: [-1, -2, -3]
+    background_color: "FF00FF00"
+    font_color: "FF000000"
+  # 可以添加更多颜色规则...
+
+# ============== 数据分析配置 ==============
+analysis:
+  # 分析器类型：mt4_analyzer 或 custom_analyzer
+  analyzer_type: "custom_analyzer"
+  rules:
+    # 数据分组规则
+    rows_per_group: 2                    # 每组行数
+    row_meanings: ["新数据", "旧数据"]      # 行的含义
+    # 重要数值监控
+    important_values: [5, 10, -5, -10]   # 需要特别关注的数值
+    # 分析的列
+    analysis_columns: ["A", "B", "C"]     # 要分析的列
+    column_names: ["列1", "列2", "列3"]    # 列的显示名称
+    # 自定义参数（可选）
+    custom_params:
+      threshold: 0.1                     # 变化阈值
+      comparison_type: "absolute"        # 比较类型
+
+# ============== 图片生成配置 ==============
+image_generation:
+  format: "jpg"                    # 图片格式：jpg 或 png
+  quality: 95                      # 图片质量（1-100）
+  size:
+    width: 1080                    # 图片宽度
+    height: 800                    # 图片高度
+  include_borders: true            # 是否包含表格边框
+  header_style:
+    background_color: [220, 220, 220]  # 表头背景色 [R, G, B]
+    font_color: [0, 0, 0]              # 表头字体色 [R, G, B]
+    font_size: 10                      # 表头字体大小
+
+# ============== 邮件发送配置 ==============
+email:
+  enabled: true                         # 是否启用邮件发送
+  send_times:
+    start_time: "09:00"                 # 发送开始时间
+    end_time: "18:00"                   # 发送结束时间
+  recipients:                           # 收件人列表
+    - "user1@example.com"
+    - "user2@example.com"
+  subject_template: "数据报告 - {date}"    # 邮件主题模板
+  template_file: "templates/default_email.html"  # 邮件模板文件
+  attachments:
+    include_excel: true                 # 是否包含Excel附件
+    include_screenshot: true            # 是否包含截图
+    embed_images: true                  # 是否将图片嵌入正文
+
+# ============== 输出文件配置 ==============
+output:
+  excel_suffix: "_processed.xlsx"       # Excel文件后缀
+  screenshot_suffix: "_screenshot.jpg"  # 截图文件后缀
+  output_directory: "output"            # 输出目录
+  keep_temp_files: false               # 是否保留临时文件
+
+# ============== 日志配置 ==============
+logging:
+  level: "INFO"                        # 日志级别：DEBUG, INFO, WARNING, ERROR
+  format: "%(asctime)s - %(levelname)s - %(message)s"
+  file: "logs/processor.log"           # 日志文件路径

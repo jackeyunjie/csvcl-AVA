@@ -3,7 +3,7 @@
 """
 CSV文件颜色标记程序
 功能：
-1. 从指定文件夹查找包含特定字符且在5分钟内创建的CSV文件
+1. 从指定文件夹查找包含特定字符且在10分钟内创建的CSV文件
 2. 对符合条件的数值进行颜色标记
 """
 
@@ -28,11 +28,11 @@ class CSVColorMarker:
         Args:
             search_path (str): 搜索路径
             target_string (str): 目标字符串，文件名需包含此字符串
-            time_limit_minutes (int): 时间限制（分钟），默认5分钟
+            time_limit_minutes (int): 时间限制（分钟），默认7分钟
         """
         # 默认路径为MT4的Files目录
         if search_path is None:
-            self.search_path = r"C:\Users\MECHREVO\AppData\Roaming\MetaQuotes\Terminal\1F7FB83FCE28CDC848B46CF4612D1D35\MQL4\Files"
+            self.search_path = r"C:\Users\MECHREVO\AppData\Roaming\MetaQuotes\Terminal\50D8083188871EAB17316B22F188CFF7\MQL4\Files"
         else:
             self.search_path = search_path
             
@@ -42,11 +42,29 @@ class CSVColorMarker:
         # 定义颜色映射
         self.color_rules = {
             2: 'FF0000',    # 红色背景
+            3: 'FF0000',    # 红色背景
             4: 'FF0000',    # 红色背景
+            5: 'FF0000',    # 红色背景
             6: 'FF0000',    # 红色背景
+            7: 'FF0000',    # 红色背景
+            10: 'FFCCCC',   # 淡红色背景
+            11: 'FFCCCC',   # 淡红色背景
+            12: 'FFCCCC',   # 淡红色背景
+            13: 'FFCCCC',   # 淡红色背景
+            14: 'FFCCCC',   # 淡红色背景
+            15: 'FFCCCC',   # 淡红色背景
             -2: '00FF00',   # 绿色背景
+            -3: '00FF00',   # 绿色背景
             -4: '00FF00',   # 绿色背景
+            -5: '00FF00',   # 绿色背景
             -6: '00FF00',   # 绿色背景
+            -7: '00FF00',   # 绿色背景
+            -10: 'CCFFCC',  # 淡绿色背景
+            -11: 'CCFFCC',  # 淡绿色背景
+            -12: 'CCFFCC',  # 淡绿色背景
+            -13: 'CCFFCC',  # 淡绿色背景
+            -14: 'CCFFCC',  # 淡绿色背景
+            -15: 'CCFFCC',  # 淡绿色背景
             8: 'FFFF00'     # 黄色背景
         }
     
@@ -86,12 +104,12 @@ class CSVColorMarker:
                 
                 if creation_time >= time_threshold:
                     matching_files.append(file_path)
-                    print(f"✓ 找到匹配文件: {filename}")
+                    print(f"[OK] 找到匹配文件: {filename}")
                     print(f"  创建时间: {creation_time.strftime('%Y-%m-%d %H:%M:%S')}")
                 else:
-                    print(f"× 文件太旧: {filename} (创建于 {creation_time.strftime('%Y-%m-%d %H:%M:%S')})")
+                    print(f"[X] 文件太旧: {filename} (创建于 {creation_time.strftime('%Y-%m-%d %H:%M:%S')})")
             else:
-                print(f"× 文件名不匹配: {filename}")
+                print(f"[X] 文件名不匹配: {filename}")
         
         print(f"\n总共找到 {len(matching_files)} 个符合条件的文件")
         return matching_files
@@ -121,6 +139,15 @@ class CSVColorMarker:
             # 为红色背景的单元格（数值2、4、6）设置黑色字体
             if color_code == 'FF0000':  # 红色背景
                 fonts[value] = Font(color='000000')  # 黑色字体
+            # 为淡红色背景的单元格（数值10-15）设置黑色字体
+            elif color_code == 'FFCCCC':  # 淡红色背景
+                fonts[value] = Font(color='000000')  # 黑色字体
+            # 为绿色背景的单元格（数值-2、-4、-6）设置黑色字体
+            elif color_code == '00FF00':  # 绿色背景
+                fonts[value] = Font(color='000000')  # 黑色字体
+            # 为淡绿色背景的单元格（数值-10到-15）设置黑色字体
+            elif color_code == 'CCFFCC':  # 淡绿色背景
+                fonts[value] = Font(color='000000')  # 黑色字体
             else:
                 fonts[value] = Font(color='000000')  # 黑色字体（默认）
         
@@ -137,21 +164,25 @@ class CSVColorMarker:
                         # 尝试将值转换为数字
                         numeric_value = float(cell_value)
                         
-                        # 检查是否需要着色
-                        if numeric_value in self.color_rules:
-                            cell.fill = color_fills[numeric_value]
-                            cell.font = fonts[numeric_value]  # 设置字体颜色
-                            col_letter = self.get_column_letter(col)
-                            # 根据实际的颜色规则判断字体颜色
-                            font_color = "黑色"
-                            print(f"单元格 {col_letter}{row} 值 {numeric_value} 已标记为相应颜色，字体颜色: {font_color}")
-                            colored_count += 1
+                        # 解决浮点数精度问题：检查是否接近整数值
+                        if abs(numeric_value - round(numeric_value)) < 1e-10:
+                            int_value = int(round(numeric_value))
                             
+                            # 检查整数值是否在颜色规则中
+                            if int_value in self.color_rules:
+                                cell.fill = color_fills[int_value]
+                                cell.font = fonts[int_value]  # 设置字体颜色
+                                col_letter = self.get_column_letter(col)
+                                # 根据实际的颜色规则判断字体颜色
+                                font_color = "黑色"
+                                print(f"单元格 {col_letter}{row} 值 {int_value} 已标记为相应颜色，字体颜色: {font_color}")
+                                colored_count += 1
+                                
                 except (ValueError, TypeError):
                     # 如果不是数字，跳过
                     continue
         
-        print(f"✓ 共标记了 {colored_count} 个单元格")
+        print(f"[OK] 共标记了 {colored_count} 个单元格")
     
     def parse_range(self, range_str):
         """
@@ -231,10 +262,10 @@ class CSVColorMarker:
             # 将B列的宽度设置为默认宽度的1.5倍
             worksheet.column_dimensions['B'].width = default_width * 1.5
             
-            print(f"✓ 已调整B列宽度为其他列的1.5倍（B列: {default_width * 1.5}, 其他列: {default_width}）")
+            print(f"[OK] 已调整B列宽度为其他列的1.5倍（B列: {default_width * 1.5}, 其他列: {default_width}）")
             
         except Exception as e:
-            print(f"✗ 调整列宽时出错: {str(e)}")
+            print(f"[ERROR] 调整列宽时出错: {str(e)}")
     
     def save_range_as_image(self, worksheet, range_str="A1:M40", output_path=None, include_headers=True):
         """
@@ -293,6 +324,10 @@ class CSVColorMarker:
                 '00FF00': (0, 255, 0),      # 绿色背景（标准格式）
                 '00FFFF00': (255, 255, 0),  # 黄色背景（openpyxl格式）
                 'FFFF00': (255, 255, 0),    # 黄色背景（标准格式）
+                '00FFCCCC': (255, 204, 204), # 淡红色背景（openpyxl格式）
+                'FFCCCC': (255, 204, 204),   # 淡红色背景（标准格式）
+                '00CCFFCC': (204, 255, 204), # 淡绿色背景（openpyxl格式）
+                'CCFFCC': (204, 255, 204),   # 淡绿色背景（标准格式）
                 'FFFFFF': (255, 255, 255),  # 白色背景（默认）
                 '00FFFFFF': (255, 255, 255), # 白色背景（openpyxl格式）
                 '00000000': (255, 255, 255)  # 透明色作为白色处理
@@ -395,7 +430,7 @@ class CSVColorMarker:
             
             # 保存图片
             img.save(output_path, 'PNG')
-            print(f"✓ 已保存完整表格图片: {os.path.basename(output_path)}")
+            print(f"[OK] 已保存完整表格图片: {os.path.basename(output_path)}")
             print(f"  完整路径: {os.path.abspath(output_path)}")
             print(f"  图片尺寸: {img_width} x {img_height} 像素")
             print(f"  包含行列号: {'是' if include_headers else '否'}")
@@ -403,7 +438,7 @@ class CSVColorMarker:
             return output_path
             
         except Exception as e:
-            print(f"✗ 保存图片时出错: {str(e)}")
+            print(f"[ERROR] 保存图片时出错: {str(e)}")
             return None
     
     def process_csv_file(self, file_path):
@@ -451,13 +486,13 @@ class CSVColorMarker:
             
             # 保存文件
             wb.save(output_path)
-            print(f"✓ 已保存彩色标记文件: {output_filename}")
+            print(f"[OK] 已保存彩色标记文件: {output_filename}")
             print(f"  完整路径: {os.path.abspath(output_path)}")
             
             return output_path
             
         except Exception as e:
-            print(f"✗ 处理文件时出错: {str(e)}")
+            print(f"[ERROR] 处理文件时出错: {str(e)}")
             return None
     
     def run(self):
@@ -466,9 +501,11 @@ class CSVColorMarker:
         """
         print("=== CSV文件颜色标记程序 ===")
         print(f"颜色规则:")
-        print(f"  红色背景+黑色字体: 2, 4, 6")
-        print(f"  绿色: -2, -4, -6")
-        print(f"  黄色: 8")
+        print(f"  红色背景+黑色字体: 2, 3, 4, 5, 6, 7")
+        print(f"  淡红色背景+黑色字体: 10, 11, 12, 13, 14, 15")
+        print(f"  绿色背景+黑色字体: -2, -3, -4, -5, -6, -7")
+        print(f"  淡绿色背景+黑色字体: -10, -11, -12, -13, -14, -15")
+        print(f"  黄色背景+黑色字体: 8")
         print("=" * 40)
         
         # 查找符合条件的文件

@@ -3,6 +3,20 @@ email_config.ini
 config_real.ini
 .env
 
+# 虚拟环境与缓存
+.venv/
+.npm-cache/
+
+# 本地 Agent/IDE 配置
+.claude/settings.local.json
+.agents/
+.qoder/agents/
+
+# 大型数据文件
+MT5_AI_Trading/data/
+*.db
+*.duckdb
+
 # 生成的临时文件
 *.xlsx
 *.jpg
@@ -61,3 +75,7 @@ htmlcov/
 *.temp
 temp/
 tmp/
+
+# Windows 保留设备名文件，无法加入 Git
+nul
+MT5_AI_Trading/nul

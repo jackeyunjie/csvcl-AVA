@@ -1,0 +1,31 @@
+{
+  "symbol": "EURUSD",
+  "start_date": "2024-01-01T00:00:00",
+  "end_date": "2024-10-04T00:00:00",
+  "initial_balance": 10000.0,
+  "final_balance": 10998.60285161062,
+  "total_return_pct": 9.986028516106199,
+  "total_trades": 8,
+  "winning_trades": 4,
+  "losing_trades": 4,
+  "win_rate": 0.5,
+  "avg_profit": 1774.0080891075531,
+  "avg_loss": -1518.1073762048973,
+  "profit_factor": 1.1685656211897077,
+  "max_drawdown_pct": 39.388700656995326,
+  "max_drawdown_duration": 75,
+  "sharpe_ratio": 0.4988234905469916,
+  "sortino_ratio": 0.7438540729406036,
+  "calmar_ratio": 0.25352520772559956,
+  "expectancy": 127.95035645132793,
+  "avg_trade_return": 127.95035645132793,
+  "state_regime_stats": {
+    "W1:8|MN1:8": {
+      "regime_id": "W1:8|MN1:8",
+      "total_trades": 8,
+      "win_rate": 0.5,
+      "total_pnl": 1023.6028516106235,
+      "profit_factor": 1.1685656211897077
+    }
+  }
+}

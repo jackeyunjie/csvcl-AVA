@@ -15,9 +15,9 @@ def main():
     
     # 使用预设的MT4路径和参数
     marker = CSVColorMarker(
-        search_path=r"C:\Users\MECHREVO\AppData\Roaming\MetaQuotes\Terminal\1F7FB83FCE28CDC848B46CF4612D1D35\MQL4\Files",
+        search_path=r"C:\Users\MECHREVO\AppData\Roaming\MetaQuotes\Terminal\50D8083188871EAB17316B22F188CFF7\MQL4\Files",
         target_string="KVBt_@_D1",
-        time_limit_minutes=5
+        time_limit_minutes=7
     )
     
     marker.run()

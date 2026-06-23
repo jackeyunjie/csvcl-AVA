@@ -1,0 +1,2 @@
+﻿experiment_id,state_pattern,direction,hold_bars,total_samples,win_rate,avg_return,profit_factor,sharpe_ratio,max_drawdown,score,yearly_stability,market_stability
+exp_h1_D1_6_H1_4_long_5_20260528_102434,"D1=6,H1=4",long,5,116,81.0%,0.4436,7.34,15.21,9.5%,80.0,"{""2026"": 0.8103448275862069}","{""US_30"": 0.8309859154929577, ""US_500"": 0.78125, ""US_TECH100"": 0.7692307692307693}"

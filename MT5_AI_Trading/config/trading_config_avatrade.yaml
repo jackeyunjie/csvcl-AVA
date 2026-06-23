@@ -1,0 +1,32 @@
+# AVATRADE 单账户 MT5 配置
+# 停用 KVB，只使用 AVATRADE
+
+mt5:
+  connection_mode: zeromq
+  host: localhost
+  pub_port: 5565
+  req_port: 5566
+  heartbeat_interval: 5
+  auto_reconnect: true
+  label: AVATRADE
+
+trading:
+  symbol: EURUSD
+  timeframe: H1
+  min_confidence: 0.6
+  enable_llm: false
+  live_trading: false
+  dry_run: true
+  max_lot_size: 0.1
+  signal_cooldown_seconds: 300
+
+risk:
+  max_risk_per_trade: 0.02
+  max_risk_per_day: 0.06
+  max_drawdown: 0.10
+  max_positions: 5
+  min_risk_reward: 1.5
+
+monitoring:
+  alert_cooldown: 300
+  risk_check_interval: 60

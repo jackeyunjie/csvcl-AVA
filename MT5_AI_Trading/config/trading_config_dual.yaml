@@ -1,0 +1,92 @@
+# AI 量化交易系统 - 双MT5配置
+# MT5#1: KVB (生产环境) - 端口 5555/5556
+# MT5#2: AVATRADE (研发环境) - 端口 5565/5566
+
+# MT5 连接配置
+mt5:
+  production:
+    host: localhost
+    pub_port: 5555      # 行情发布端口 (PUB/SUB)
+    req_port: 5556      # 交易指令端口 (REQ/REP)
+    heartbeat_interval: 5
+    auto_reconnect: true
+    label: "KVB"
+    
+  research:
+    host: localhost
+    pub_port: 5565      # 行情发布端口 (PUB/SUB)
+    req_port: 5566      # 交易指令端口 (REQ/REP)
+    heartbeat_interval: 5
+    auto_reconnect: true
+    label: "AVATRADE"
+
+# 交易配置
+trading:
+  symbol: EURUSD
+  timeframe: H1
+  min_confidence: 0.6
+  enable_llm: false
+  max_spread_points: 10
+  
+  # 安全开关（默认关闭真实交易）
+  live_trading: false
+  dry_run: true
+  max_lot_size: 0.1
+  signal_cooldown_seconds: 300
+
+# 风险控制配置
+risk:
+  max_risk_per_trade: 0.02
+  max_risk_per_day: 0.06
+  max_drawdown: 0.10
+  max_positions: 5
+  min_risk_reward: 1.5
+  use_atr_stop: true
+  atr_multiplier: 2.0
+  
+  # 安全硬限制
+  hard_max_lot_size: 0.1
+  require_live_trading: true
+
+# LLM AI配置
+llm:
+  provider: openai
+  model: gpt-4
+  api_key: ""
+  max_tokens: 1000
+  temperature: 0.3
+  analysis_interval: 300
+
+# 监控告警配置
+monitoring:
+  alert_cooldown: 300
+  risk_check_interval: 60
+  equity_update_interval: 1
+  
+  thresholds:
+    max_drawdown: 0.10
+    daily_loss: 0.05
+    var_95: 0.03
+    margin_level: 1.5
+    consecutive_losses: 5
+
+# 回测配置
+backtest:
+  initial_balance: 10000
+  commission: 0.0001
+  spread: 0.0002
+  slippage: 0.0001
+  data_source: mt5
+
+# 日志配置
+logging:
+  level: INFO
+  file: logs/trading.log
+  max_size: 10485760
+  backup_count: 5
+
+# 数据存储配置
+data:
+  historical_path: data/historical
+  model_path: data/models
+  save_ticks: true

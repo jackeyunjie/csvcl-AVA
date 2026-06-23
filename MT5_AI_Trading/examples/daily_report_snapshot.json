@@ -1,0 +1,92 @@
+{
+  "date": "2026-05-17",
+  "product_name": "MT5 普通投资者观察版",
+  "universe_name": "外汇 / 贵金属 / 指数",
+  "total_products": 18,
+  "focus_text": "外汇、贵金属更集中",
+  "account": {
+    "equity": 10042.8
+  },
+  "risk_metrics": {
+    "current_drawdown": 0.012,
+    "max_drawdown": 0.047,
+    "win_rate": 0.56,
+    "profit_factor": 1.38
+  },
+  "watchlist": [
+    {
+      "symbol": "XAUUSD",
+      "name": "黄金",
+      "theme": "贵金属",
+      "state": "趋势 / 风险 / 信号同向",
+      "price": 2385.42,
+      "spread": 18,
+      "confidence": 0.72,
+      "tags": ["避险资产", "强趋势"],
+      "note": "黄金进入多层观察状态，适合先看避险方向是否延续。"
+    },
+    {
+      "symbol": "EURUSD",
+      "name": "欧元兑美元",
+      "theme": "主流外汇",
+      "state": "趋势延续",
+      "price": 1.08752,
+      "spread": 1.2,
+      "confidence": 0.66,
+      "tags": ["主流货币", "BUY"],
+      "note": "主流货币对方向相对清晰，适合作为外汇方向代表。"
+    },
+    {
+      "symbol": "USDJPY",
+      "name": "美元兑日元",
+      "theme": "主流外汇",
+      "state": "高波动观察",
+      "price": 156.214,
+      "spread": 1.6,
+      "confidence": 0.61,
+      "tags": ["日元", "高波动"],
+      "note": "波动放大，普通人只观察状态是否持续，不急于判断。"
+    },
+    {
+      "symbol": "NAS100",
+      "name": "纳指100",
+      "theme": "股指",
+      "state": "动量观察",
+      "price": 18642.2,
+      "spread": 2.5,
+      "confidence": 0.59,
+      "tags": ["科技股指"],
+      "note": "股指方向样本，适合和 US500 一起看风险偏好。"
+    },
+    {
+      "symbol": "GBPUSD",
+      "name": "英镑兑美元",
+      "theme": "主流外汇",
+      "state": "等待确认",
+      "price": 1.27311,
+      "spread": 1.5,
+      "confidence": 0.55,
+      "tags": ["主流货币"],
+      "note": "信号尚未完全统一，适合放在后续观察位。"
+    },
+    {
+      "symbol": "WTI",
+      "name": "原油",
+      "theme": "能源",
+      "state": "事件后观察",
+      "price": 79.48,
+      "spread": 4.0,
+      "confidence": 0.58,
+      "tags": ["能源", "高波动"],
+      "note": "能源波动通常更大，普通人只看方向持续性。"
+    }
+  ],
+  "alerts": [
+    {
+      "level": "INFO",
+      "category": "SYSTEM",
+      "message": "MT5 连接状态正常，今日报告可按观察清单使用。"
+    }
+  ]
+}
+

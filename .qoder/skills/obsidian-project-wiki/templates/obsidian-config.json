@@ -1,0 +1,51 @@
+{
+  "_comment": "Obsidian 推荐配置 — 复制到 .obsidian/app.json",
+  "recommended_settings": {
+    "newFileLocation": "current",
+    "showUnsupportedFiles": true,
+    "alwaysUpdateLinks": true,
+    "newLinkFormat": "relative",
+    "useMarkdownLinks": false,
+    "showLineNumber": true,
+    "strictLineBreaks": false,
+    "readableLineLength": true
+  },
+  "recommended_plugins": [
+    {
+      "name": "Dataview",
+      "id": "dataview",
+      "description": "将 vault 变成可查询的数据库。可用 DQL 语言统计 raw/wiki 文件数、列出最近更新的页面、按标签筛选等。",
+      "use_case": "知识库体检、自动生成索引"
+    },
+    {
+      "name": "Templater",
+      "id": "templater-obsidian",
+      "description": "强大的模板引擎，支持 JavaScript 表达式。可创建标准化的 wiki 页面模板（来源页、ADR 页等）。",
+      "use_case": "快速创建格式统一的 wiki 页面"
+    },
+    {
+      "name": "Calendar",
+      "id": "calendar",
+      "description": "日历视图，直观查看按日期组织的 raw/meetings/ 文件。",
+      "use_case": "会议纪要时间线浏览"
+    },
+    {
+      "name": "Obsidian Git",
+      "id": "obsidian-git",
+      "description": "在 Obsidian 内直接 Git commit/push/pull，方便团队同步知识库。",
+      "use_case": "团队协作同步"
+    }
+  ],
+  "optional_plugins": [
+    {
+      "name": "Graph Analysis",
+      "id": "graph-analysis",
+      "description": "分析知识图谱的连接度，找出孤立页面和核心枢纽页面。"
+    },
+    {
+      "name": "Tag Wrangler",
+      "id": "tag-wrangler",
+      "description": "批量管理标签，合并、重命名、拆分标签。"
+    }
+  ]
+}

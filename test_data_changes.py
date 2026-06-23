@@ -10,12 +10,13 @@ from process_real_mt4_data import RealMT4DataProcessor
 def create_test_data_with_changes():
     """
     创建包含重要数值变化的测试数据
+    测试由非-2, 2, -6, 6数字变为-2, 2, -6, 6的情况
     """
     print("🔍 === 数据变化分析测试 ===\n")
     
     print("📋 测试数据说明:")
     print("   ✅ 每3行为一个品种（今天、昨天、前天）")
-    print("   ✅ 模拟重要数值变化（2、6、-2、-6）")
+    print("   ✅ 测试由非-2, 2, -6, 6数字变为-2, 2, -6, 6的情况")
     print("   ✅ 测试E、F、G列（MN1、W1、D1）的变化检测\n")
     
     # 创建测试数据，模拟真实的MT4数据格式
@@ -58,11 +59,11 @@ def create_test_data_with_changes():
     print(df[['SymbolName', 'TIME', 'MN1', 'W1', 'D1']].to_string())
     
     print(f"\n🎯 预期的重要变化:")
-    print(f"   1. HSI MN1列: 0 → 2 (今天变成重要数值)")
-    print(f"   2. HSI W1列: 3 → 6 (今天变成重要数值)")
-    print(f"   3. SPX500 MN1列: 4 → -2 (今天变成重要数值)")
-    print(f"   4. SPX500 D1列: 1 → -2 (今天变成重要数值)")
-    print(f"   5. EURUSD W1列: 0 → -6 (今天变成重要数值)")
+    print(f"   1. HSI MN1列: 0 → 2 (由非重要数值变为重要数值)")
+    print(f"   2. HSI W1列: 3 → 6 (由非重要数值变为重要数值)")
+    print(f"   3. SPX500 MN1列: 4 → -2 (由非重要数值变为重要数值)")
+    print(f"   4. SPX500 D1列: 1 → -2 (由非重要数值变为重要数值)")
+    print(f"   5. EURUSD W1列: 0 → -6 (由非重要数值变为重要数值)")
     
     return df
 

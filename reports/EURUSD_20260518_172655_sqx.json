@@ -1,0 +1,17 @@
+{
+  "NetProfit": 998.6,
+  "ProfitFactor": 1.17,
+  "SharpeRatio": 0.5,
+  "SortinoRatio": 0.74,
+  "MaxDrawdown": 39.39,
+  "MaxDrawdownDuration": 75,
+  "TotalTrades": 8,
+  "WinningTrades": 4,
+  "LosingTrades": 4,
+  "WinPercent": 50.0,
+  "AvgProfit": 1774.01,
+  "AvgLoss": -1518.11,
+  "Expectancy": 127.95,
+  "CalmarRatio": 0.25,
+  "TotalReturn": 9.99
+}

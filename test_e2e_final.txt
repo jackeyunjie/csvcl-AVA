@@ -1,0 +1,2417 @@
+======================================================================
+KVB 自主回测平台 - 端到端整合测试
+======================================================================
+
+[Step 1] 数据层: 生成测试数据
+  生成数据: 200条 | 2024-01-01 ~ 2024-10-04
+数据保存成功: EURUSD D1 | 200条
+d:\qoder\csvcl - AVA\MT5_AI_Trading/python\backtest_platform\data_layer.py:563: UserWarning: pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
+  df = pd.read_sql_query(query, conn, params=params)
+数据读取: EURUSD D1 | 200条
+  存储验证: 200条 | 质量检查...
+d:\qoder\csvcl - AVA\MT5_AI_Trading/python\backtest_platform\data_layer.py:563: UserWarning: pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
+  df = pd.read_sql_query(query, conn, params=params)
+数据读取: EURUSD D1 | 200条
+  数据质量: 有效=True | 行数=200 | 异常=0
+
+[Step 2] 计算层: State Hex + MISS融合
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共200个
+三元组序列计算完成: 200行
+StateHexEncoder初始化完成
+  最新三元组: MN1=8 W1=0 D1=6
+  融合信心度: 40.00%
+  融合标签: D1多向, D1持续4天, W1持续2周, 价格:oscillation, 成交:average
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共1个
+三元组序列计算完成: 1行
+数据不足计算MISS: 1 < 20
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共2个
+三元组序列计算完成: 2行
+数据不足计算MISS: 2 < 20
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共3个
+三元组序列计算完成: 3行
+数据不足计算MISS: 3 < 20
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共4个
+三元组序列计算完成: 4行
+数据不足计算MISS: 4 < 20
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共5个
+三元组序列计算完成: 5行
+数据不足计算MISS: 5 < 20
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共6个
+三元组序列计算完成: 6行
+数据不足计算MISS: 6 < 20
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共7个
+三元组序列计算完成: 7行
+数据不足计算MISS: 7 < 20
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共8个
+三元组序列计算完成: 8行
+数据不足计算MISS: 8 < 20
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共9个
+三元组序列计算完成: 9行
+数据不足计算MISS: 9 < 20
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共10个
+三元组序列计算完成: 10行
+数据不足计算MISS: 10 < 20
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共11个
+三元组序列计算完成: 11行
+数据不足计算MISS: 11 < 20
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共12个
+三元组序列计算完成: 12行
+数据不足计算MISS: 12 < 20
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共13个
+三元组序列计算完成: 13行
+数据不足计算MISS: 13 < 20
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共14个
+三元组序列计算完成: 14行
+数据不足计算MISS: 14 < 20
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共15个
+三元组序列计算完成: 15行
+数据不足计算MISS: 15 < 20
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共16个
+三元组序列计算完成: 16行
+数据不足计算MISS: 16 < 20
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共17个
+三元组序列计算完成: 17行
+数据不足计算MISS: 17 < 20
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共18个
+三元组序列计算完成: 18行
+数据不足计算MISS: 18 < 20
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共19个
+三元组序列计算完成: 19行
+数据不足计算MISS: 19 < 20
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共20个
+三元组序列计算完成: 20行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共21个
+三元组序列计算完成: 21行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共22个
+三元组序列计算完成: 22行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共23个
+三元组序列计算完成: 23行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共24个
+三元组序列计算完成: 24行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共25个
+三元组序列计算完成: 25行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共26个
+三元组序列计算完成: 26行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共27个
+三元组序列计算完成: 27行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共28个
+三元组序列计算完成: 28行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共29个
+三元组序列计算完成: 29行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共30个
+三元组序列计算完成: 30行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共31个
+三元组序列计算完成: 31行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共32个
+三元组序列计算完成: 32行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共33个
+三元组序列计算完成: 33行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共34个
+三元组序列计算完成: 34行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共35个
+三元组序列计算完成: 35行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共36个
+三元组序列计算完成: 36行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共37个
+三元组序列计算完成: 37行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共38个
+三元组序列计算完成: 38行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共39个
+三元组序列计算完成: 39行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共40个
+三元组序列计算完成: 40行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共41个
+三元组序列计算完成: 41行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共42个
+三元组序列计算完成: 42行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共43个
+三元组序列计算完成: 43行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共44个
+三元组序列计算完成: 44行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共45个
+三元组序列计算完成: 45行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共46个
+三元组序列计算完成: 46行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共47个
+三元组序列计算完成: 47行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共48个
+三元组序列计算完成: 48行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共49个
+三元组序列计算完成: 49行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共50个
+三元组序列计算完成: 50行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共51个
+三元组序列计算完成: 51行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共52个
+三元组序列计算完成: 52行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共53个
+三元组序列计算完成: 53行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共54个
+三元组序列计算完成: 54行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共55个
+三元组序列计算完成: 55行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共56个
+三元组序列计算完成: 56行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共57个
+三元组序列计算完成: 57行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共58个
+三元组序列计算完成: 58行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共59个
+三元组序列计算完成: 59行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共60个
+三元组序列计算完成: 60行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共61个
+三元组序列计算完成: 61行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共62个
+三元组序列计算完成: 62行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共63个
+三元组序列计算完成: 63行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共64个
+三元组序列计算完成: 64行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共65个
+三元组序列计算完成: 65行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共66个
+三元组序列计算完成: 66行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共67个
+三元组序列计算完成: 67行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共68个
+三元组序列计算完成: 68行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共69个
+三元组序列计算完成: 69行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共70个
+三元组序列计算完成: 70行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共71个
+三元组序列计算完成: 71行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共72个
+三元组序列计算完成: 72行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共73个
+三元组序列计算完成: 73行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共74个
+三元组序列计算完成: 74行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共75个
+三元组序列计算完成: 75行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共76个
+三元组序列计算完成: 76行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共77个
+三元组序列计算完成: 77行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共78个
+三元组序列计算完成: 78行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共79个
+三元组序列计算完成: 79行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共80个
+三元组序列计算完成: 80行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共81个
+三元组序列计算完成: 81行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共82个
+三元组序列计算完成: 82行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共83个
+三元组序列计算完成: 83行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共84个
+三元组序列计算完成: 84行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共85个
+三元组序列计算完成: 85行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共86个
+三元组序列计算完成: 86行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共87个
+三元组序列计算完成: 87行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共88个
+三元组序列计算完成: 88行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共89个
+三元组序列计算完成: 89行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共90个
+三元组序列计算完成: 90行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共91个
+三元组序列计算完成: 91行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共92个
+三元组序列计算完成: 92行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共93个
+三元组序列计算完成: 93行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共94个
+三元组序列计算完成: 94行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共95个
+三元组序列计算完成: 95行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共96个
+三元组序列计算完成: 96行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共97个
+三元组序列计算完成: 97行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共98个
+三元组序列计算完成: 98行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共99个
+三元组序列计算完成: 99行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共100个
+三元组序列计算完成: 100行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共101个
+三元组序列计算完成: 101行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共102个
+三元组序列计算完成: 102行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共103个
+三元组序列计算完成: 103行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共104个
+三元组序列计算完成: 104行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共105个
+三元组序列计算完成: 105行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共106个
+三元组序列计算完成: 106行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共107个
+三元组序列计算完成: 107行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共108个
+三元组序列计算完成: 108行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共109个
+三元组序列计算完成: 109行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共110个
+三元组序列计算完成: 110行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共111个
+三元组序列计算完成: 111行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共112个
+三元组序列计算完成: 112行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共113个
+三元组序列计算完成: 113行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共114个
+三元组序列计算完成: 114行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共115个
+三元组序列计算完成: 115行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共116个
+三元组序列计算完成: 116行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共117个
+三元组序列计算完成: 117行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共118个
+三元组序列计算完成: 118行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共119个
+三元组序列计算完成: 119行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共120个
+三元组序列计算完成: 120行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共121个
+三元组序列计算完成: 121行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共122个
+三元组序列计算完成: 122行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共123个
+三元组序列计算完成: 123行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共124个
+三元组序列计算完成: 124行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共125个
+三元组序列计算完成: 125行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共126个
+三元组序列计算完成: 126行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共127个
+三元组序列计算完成: 127行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共128个
+三元组序列计算完成: 128行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共129个
+三元组序列计算完成: 129行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共130个
+三元组序列计算完成: 130行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共131个
+三元组序列计算完成: 131行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共132个
+三元组序列计算完成: 132行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共133个
+三元组序列计算完成: 133行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共134个
+三元组序列计算完成: 134行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共135个
+三元组序列计算完成: 135行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共136个
+三元组序列计算完成: 136行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共137个
+三元组序列计算完成: 137行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共138个
+三元组序列计算完成: 138行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共139个
+三元组序列计算完成: 139行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共140个
+三元组序列计算完成: 140行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共141个
+三元组序列计算完成: 141行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共142个
+三元组序列计算完成: 142行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共143个
+三元组序列计算完成: 143行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共144个
+三元组序列计算完成: 144行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共145个
+三元组序列计算完成: 145行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共146个
+三元组序列计算完成: 146行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共147个
+三元组序列计算完成: 147行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共148个
+三元组序列计算完成: 148行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共149个
+三元组序列计算完成: 149行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共150个
+三元组序列计算完成: 150行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共151个
+三元组序列计算完成: 151行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共152个
+三元组序列计算完成: 152行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共153个
+三元组序列计算完成: 153行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共154个
+三元组序列计算完成: 154行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共155个
+三元组序列计算完成: 155行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共156个
+三元组序列计算完成: 156行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共157个
+三元组序列计算完成: 157行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共158个
+三元组序列计算完成: 158行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共159个
+三元组序列计算完成: 159行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共160个
+三元组序列计算完成: 160行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共161个
+三元组序列计算完成: 161行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共162个
+三元组序列计算完成: 162行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共163个
+三元组序列计算完成: 163行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共164个
+三元组序列计算完成: 164行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共165个
+三元组序列计算完成: 165行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共166个
+三元组序列计算完成: 166行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共167个
+三元组序列计算完成: 167行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共168个
+三元组序列计算完成: 168行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共169个
+三元组序列计算完成: 169行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共170个
+三元组序列计算完成: 170行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共171个
+三元组序列计算完成: 171行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共172个
+三元组序列计算完成: 172行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共173个
+三元组序列计算完成: 173行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共174个
+三元组序列计算完成: 174行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共175个
+三元组序列计算完成: 175行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共176个
+三元组序列计算完成: 176行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共177个
+三元组序列计算完成: 177行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共178个
+三元组序列计算完成: 178行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共179个
+三元组序列计算完成: 179行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共180个
+三元组序列计算完成: 180行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共181个
+三元组序列计算完成: 181行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共182个
+三元组序列计算完成: 182行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共183个
+三元组序列计算完成: 183行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共184个
+三元组序列计算完成: 184行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共185个
+三元组序列计算完成: 185行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共186个
+三元组序列计算完成: 186行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共187个
+三元组序列计算完成: 187行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共188个
+三元组序列计算完成: 188行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共189个
+三元组序列计算完成: 189行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共190个
+三元组序列计算完成: 190行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共191个
+三元组序列计算完成: 191行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共192个
+三元组序列计算完成: 192行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共193个
+三元组序列计算完成: 193行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共194个
+三元组序列计算完成: 194行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共195个
+三元组序列计算完成: 195行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共196个
+三元组序列计算完成: 196行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共197个
+三元组序列计算完成: 197行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共198个
+三元组序列计算完成: 198行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共199个
+三元组序列计算完成: 199行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共200个
+三元组序列计算完成: 200行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+  状态追踪: 历史200天 | 当前D1=6 | 持续4天
+
+[Step 3] 策略层: P107 State Hex策略
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+StateHexTradingStrategy初始化 | 模式: loose | 引擎就绪: False
+策略注册成功: P107_StateHex_v1
+  已注册策略: 1个
+    - P107_StateHex_v1: 基于P107 State Hex编码规则的三元组驱动策略
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+StateHexTradingStrategy初始化 | 模式: loose | 引擎就绪: False
+  策略参数: {'min_confidence': 0.6, 'state_alignment_mode': 'loose', 'max_positions': 5, 'enable_moneyflow': False, 'moneyflow_threshold': 0.5, 'risk_per_trade': 0.02, 'sl_atr_multiplier': 2.0, 'tp_atr_multiplier': 3.0}
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共51个
+三元组序列计算完成: 51行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共52个
+三元组序列计算完成: 52行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共53个
+三元组序列计算完成: 53行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共54个
+三元组序列计算完成: 54行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共55个
+三元组序列计算完成: 55行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共56个
+三元组序列计算完成: 56行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共57个
+三元组序列计算完成: 57行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共58个
+三元组序列计算完成: 58行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共59个
+三元组序列计算完成: 59行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共60个
+三元组序列计算完成: 60行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共61个
+三元组序列计算完成: 61行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共62个
+三元组序列计算完成: 62行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共63个
+三元组序列计算完成: 63行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共64个
+三元组序列计算完成: 64行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共65个
+三元组序列计算完成: 65行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共66个
+三元组序列计算完成: 66行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共67个
+三元组序列计算完成: 67行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共68个
+三元组序列计算完成: 68行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共69个
+三元组序列计算完成: 69行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共70个
+三元组序列计算完成: 70行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共71个
+三元组序列计算完成: 71行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共72个
+三元组序列计算完成: 72行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共73个
+三元组序列计算完成: 73行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共74个
+三元组序列计算完成: 74行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共75个
+三元组序列计算完成: 75行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共76个
+三元组序列计算完成: 76行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共77个
+三元组序列计算完成: 77行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共78个
+三元组序列计算完成: 78行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共79个
+三元组序列计算完成: 79行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共80个
+三元组序列计算完成: 80行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共81个
+三元组序列计算完成: 81行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共82个
+三元组序列计算完成: 82行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共83个
+三元组序列计算完成: 83行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共84个
+三元组序列计算完成: 84行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共85个
+三元组序列计算完成: 85行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共86个
+三元组序列计算完成: 86行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共87个
+三元组序列计算完成: 87行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共88个
+三元组序列计算完成: 88行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共89个
+三元组序列计算完成: 89行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共90个
+三元组序列计算完成: 90行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共91个
+三元组序列计算完成: 91行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共92个
+三元组序列计算完成: 92行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共93个
+三元组序列计算完成: 93行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共94个
+三元组序列计算完成: 94行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共95个
+三元组序列计算完成: 95行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共96个
+三元组序列计算完成: 96行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共97个
+三元组序列计算完成: 97行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共98个
+三元组序列计算完成: 98行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共99个
+三元组序列计算完成: 99行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共100个
+三元组序列计算完成: 100行
+StateHexEncoder初始化完成
+  样本信号: 21个 (第50-100天)
+
+[Step 4] 执行层: 回测运行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+回测开始: EURUSD | 数据量: 200条
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共1个
+三元组序列计算完成: 1行
+数据不足计算MISS: 1 < 20
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共2个
+三元组序列计算完成: 2行
+数据不足计算MISS: 2 < 20
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共3个
+三元组序列计算完成: 3行
+数据不足计算MISS: 3 < 20
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共4个
+三元组序列计算完成: 4行
+数据不足计算MISS: 4 < 20
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共5个
+三元组序列计算完成: 5行
+数据不足计算MISS: 5 < 20
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共6个
+三元组序列计算完成: 6行
+数据不足计算MISS: 6 < 20
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共7个
+三元组序列计算完成: 7行
+数据不足计算MISS: 7 < 20
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共8个
+三元组序列计算完成: 8行
+数据不足计算MISS: 8 < 20
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共9个
+三元组序列计算完成: 9行
+数据不足计算MISS: 9 < 20
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共10个
+三元组序列计算完成: 10行
+数据不足计算MISS: 10 < 20
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共11个
+三元组序列计算完成: 11行
+数据不足计算MISS: 11 < 20
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共12个
+三元组序列计算完成: 12行
+数据不足计算MISS: 12 < 20
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共13个
+三元组序列计算完成: 13行
+数据不足计算MISS: 13 < 20
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共14个
+三元组序列计算完成: 14行
+数据不足计算MISS: 14 < 20
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共15个
+三元组序列计算完成: 15行
+数据不足计算MISS: 15 < 20
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共16个
+三元组序列计算完成: 16行
+数据不足计算MISS: 16 < 20
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共17个
+三元组序列计算完成: 17行
+数据不足计算MISS: 17 < 20
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共18个
+三元组序列计算完成: 18行
+数据不足计算MISS: 18 < 20
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共19个
+三元组序列计算完成: 19行
+数据不足计算MISS: 19 < 20
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共20个
+三元组序列计算完成: 20行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共21个
+三元组序列计算完成: 21行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共22个
+三元组序列计算完成: 22行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共23个
+三元组序列计算完成: 23行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共24个
+三元组序列计算完成: 24行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共25个
+三元组序列计算完成: 25行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共26个
+三元组序列计算完成: 26行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共27个
+三元组序列计算完成: 27行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共28个
+三元组序列计算完成: 28行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共29个
+三元组序列计算完成: 29行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共30个
+三元组序列计算完成: 30行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共31个
+三元组序列计算完成: 31行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共32个
+三元组序列计算完成: 32行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共33个
+三元组序列计算完成: 33行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共34个
+三元组序列计算完成: 34行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共35个
+三元组序列计算完成: 35行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共36个
+三元组序列计算完成: 36行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共37个
+三元组序列计算完成: 37行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共38个
+三元组序列计算完成: 38行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共39个
+三元组序列计算完成: 39行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共40个
+三元组序列计算完成: 40行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共41个
+三元组序列计算完成: 41行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共42个
+三元组序列计算完成: 42行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共43个
+三元组序列计算完成: 43行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共44个
+三元组序列计算完成: 44行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共45个
+三元组序列计算完成: 45行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共46个
+三元组序列计算完成: 46行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共47个
+三元组序列计算完成: 47行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共48个
+三元组序列计算完成: 48行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共49个
+三元组序列计算完成: 49行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共50个
+三元组序列计算完成: 50行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共51个
+三元组序列计算完成: 51行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共52个
+三元组序列计算完成: 52行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共53个
+三元组序列计算完成: 53行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共54个
+三元组序列计算完成: 54行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共55个
+三元组序列计算完成: 55行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共56个
+三元组序列计算完成: 56行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共57个
+三元组序列计算完成: 57行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共58个
+三元组序列计算完成: 58行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共59个
+三元组序列计算完成: 59行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共60个
+三元组序列计算完成: 60行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共61个
+三元组序列计算完成: 61行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共62个
+三元组序列计算完成: 62行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共63个
+三元组序列计算完成: 63行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共64个
+三元组序列计算完成: 64行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共65个
+三元组序列计算完成: 65行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共66个
+三元组序列计算完成: 66行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共67个
+三元组序列计算完成: 67行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共68个
+三元组序列计算完成: 68行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共69个
+三元组序列计算完成: 69行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共70个
+三元组序列计算完成: 70行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共71个
+三元组序列计算完成: 71行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共72个
+三元组序列计算完成: 72行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共73个
+三元组序列计算完成: 73行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共74个
+三元组序列计算完成: 74行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共75个
+三元组序列计算完成: 75行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共76个
+三元组序列计算完成: 76行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共77个
+三元组序列计算完成: 77行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共78个
+三元组序列计算完成: 78行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共79个
+三元组序列计算完成: 79行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共80个
+三元组序列计算完成: 80行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共81个
+三元组序列计算完成: 81行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共82个
+三元组序列计算完成: 82行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共83个
+三元组序列计算完成: 83行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共84个
+三元组序列计算完成: 84行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共85个
+三元组序列计算完成: 85行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共86个
+三元组序列计算完成: 86行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共87个
+三元组序列计算完成: 87行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共88个
+三元组序列计算完成: 88行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共89个
+三元组序列计算完成: 89行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共90个
+三元组序列计算完成: 90行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共91个
+三元组序列计算完成: 91行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共92个
+三元组序列计算完成: 92行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共93个
+三元组序列计算完成: 93行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共94个
+三元组序列计算完成: 94行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共95个
+三元组序列计算完成: 95行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共96个
+三元组序列计算完成: 96行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共97个
+三元组序列计算完成: 97行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共98个
+三元组序列计算完成: 98行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共99个
+三元组序列计算完成: 99行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共100个
+三元组序列计算完成: 100行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共101个
+三元组序列计算完成: 101行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共102个
+三元组序列计算完成: 102行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共103个
+三元组序列计算完成: 103行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共104个
+三元组序列计算完成: 104行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共105个
+三元组序列计算完成: 105行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共106个
+三元组序列计算完成: 106行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共107个
+三元组序列计算完成: 107行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共108个
+三元组序列计算完成: 108行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共109个
+三元组序列计算完成: 109行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共110个
+三元组序列计算完成: 110行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共111个
+三元组序列计算完成: 111行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共112个
+三元组序列计算完成: 112行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共113个
+三元组序列计算完成: 113行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共114个
+三元组序列计算完成: 114行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共115个
+三元组序列计算完成: 115行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共116个
+三元组序列计算完成: 116行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共117个
+三元组序列计算完成: 117行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共118个
+三元组序列计算完成: 118行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共119个
+三元组序列计算完成: 119行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共120个
+三元组序列计算完成: 120行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共121个
+三元组序列计算完成: 121行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共122个
+三元组序列计算完成: 122行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共123个
+三元组序列计算完成: 123行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共124个
+三元组序列计算完成: 124行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共125个
+三元组序列计算完成: 125行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共126个
+三元组序列计算完成: 126行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共127个
+三元组序列计算完成: 127行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共128个
+三元组序列计算完成: 128行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共129个
+三元组序列计算完成: 129行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共130个
+三元组序列计算完成: 130行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共131个
+三元组序列计算完成: 131行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共132个
+三元组序列计算完成: 132行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共133个
+三元组序列计算完成: 133行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共134个
+三元组序列计算完成: 134行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共135个
+三元组序列计算完成: 135行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共136个
+三元组序列计算完成: 136行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共137个
+三元组序列计算完成: 137行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共138个
+三元组序列计算完成: 138行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共139个
+三元组序列计算完成: 139行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共140个
+三元组序列计算完成: 140行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共141个
+三元组序列计算完成: 141行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共142个
+三元组序列计算完成: 142行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共143个
+三元组序列计算完成: 143行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共144个
+三元组序列计算完成: 144行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共145个
+三元组序列计算完成: 145行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共146个
+三元组序列计算完成: 146行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共147个
+三元组序列计算完成: 147行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共148个
+三元组序列计算完成: 148行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共149个
+三元组序列计算完成: 149行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共150个
+三元组序列计算完成: 150行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共151个
+三元组序列计算完成: 151行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共152个
+三元组序列计算完成: 152行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共153个
+三元组序列计算完成: 153行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共154个
+三元组序列计算完成: 154行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共155个
+三元组序列计算完成: 155行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共156个
+三元组序列计算完成: 156行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共157个
+三元组序列计算完成: 157行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共158个
+三元组序列计算完成: 158行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共159个
+三元组序列计算完成: 159行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共160个
+三元组序列计算完成: 160行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共161个
+三元组序列计算完成: 161行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共162个
+三元组序列计算完成: 162行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共163个
+三元组序列计算完成: 163行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共164个
+三元组序列计算完成: 164行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共165个
+三元组序列计算完成: 165行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共166个
+三元组序列计算完成: 166行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共167个
+三元组序列计算完成: 167行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共168个
+三元组序列计算完成: 168行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共169个
+三元组序列计算完成: 169行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共170个
+三元组序列计算完成: 170行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共171个
+三元组序列计算完成: 171行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共172个
+三元组序列计算完成: 172行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共173个
+三元组序列计算完成: 173行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共174个
+三元组序列计算完成: 174行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共175个
+三元组序列计算完成: 175行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共176个
+三元组序列计算完成: 176行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共177个
+三元组序列计算完成: 177行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共178个
+三元组序列计算完成: 178行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共179个
+三元组序列计算完成: 179行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共180个
+三元组序列计算完成: 180行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共181个
+三元组序列计算完成: 181行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共182个
+三元组序列计算完成: 182行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共183个
+三元组序列计算完成: 183行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共184个
+三元组序列计算完成: 184行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共185个
+三元组序列计算完成: 185行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共186个
+三元组序列计算完成: 186行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共187个
+三元组序列计算完成: 187行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共188个
+三元组序列计算完成: 188行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共189个
+三元组序列计算完成: 189行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共190个
+三元组序列计算完成: 190行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共191个
+三元组序列计算完成: 191行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共192个
+三元组序列计算完成: 192行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共193个
+三元组序列计算完成: 193行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共194个
+三元组序列计算完成: 194行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共195个
+三元组序列计算完成: 195行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共196个
+三元组序列计算完成: 196行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共197个
+三元组序列计算完成: 197行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共198个
+三元组序列计算完成: 198行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共199个
+三元组序列计算完成: 199行
+StateHexEncoder初始化完成
+StateHexEncoder初始化完成
+KVBStateHexEngine初始化完成
+三元组计算完成 | 共200个
+三元组序列计算完成: 200行
+StateHexEncoder初始化完成
+回测完成: EURUSD | 收益: +9.99% | 交易: 8 | 胜率: 50.0%
+
+[Step 5] 报告输出
+
+======================================================================
+回测绩效报告
+======================================================================
+品种: EURUSD
+回测区间: 2024-01-01 ~ 2024-10-04
+初始资金: 10,000.00
+最终资金: 10,998.60
+总收益率: +9.99%
+
+交易统计:
+  总交易: 8
+  盈利: 4 | 亏损: 4
+  胜率: 50.0%
+  平均盈利: +1774.01
+  平均亏损: -1518.11
+  盈亏比: 1.17
+
+风险指标:
+  最大回撤: 39.39%
+  回撤持续: 75天
+  夏普比率: 0.50
+  Sortino比率: 0.74
+  Calmar比率: 0.25
+
+其他指标:
+  期望值: +127.95
+  平均交易收益: +127.95
+
+State-Regime 统计:
+  W1:8|MN1:8:
+    交易: 8 | 胜率: 50.0% | 总盈亏: +1023.60
+    平均盈亏: +127.95 | 盈亏比: 1.17
+======================================================================
+
+[JSON导出验证]
+  字段数: 21
+  关键字段: total_return=9.99%, sharpe=0.50, trades=8
+
+[SQX导出验证]
+  字段数: 15
+    NetProfit: 998.6
+    ProfitFactor: 1.17
+    SharpeRatio: 0.5
+    MaxDrawdown: 39.39
+    TotalTrades: 8
+    WinPercent: 50.0
+
+[Step 6] 展示层: HTML报告生成
+HTML报告已生成: reports\backtest_report_EURUSD_20260518_172657.html
+  HTML: reports\backtest_report_EURUSD_20260518_172657.html
+  JSON: reports\EURUSD_20260518_172655.json
+  CSV: reports\EURUSD_20260518_172655_trades.csv
+  SQX: reports\EURUSD_20260518_172655_sqx.json
+
+======================================================================
+验证清单
+======================================================================
+  [OK] 数据层: 数据存储: 通过
+  [OK] 数据层: 质量报告: 通过
+  [OK] 计算层: 三元组计算: 通过
+  [OK] 计算层: MISS融合: 通过
+  [OK] 计算层: 状态追踪: 通过
+  [OK] 策略层: 策略注册: 通过
+  [OK] 策略层: 信号生成: 通过
+  [OK] 执行层: 回测完成: 通过
+  [OK] 执行层: 绩效指标: 通过
+  [OK] 执行层: State-Regime: 通过
+  [OK] 报告: JSON导出: 通过
+  [OK] 报告: SQX导出: 通过
+  [OK] 展示层: HTML报告: 通过
+
+总计: 13/13 项通过
+
+所有验证通过！五层架构整合成功。
+======================================================================
+RESULT: True

@@ -1,0 +1,131 @@
+# AI 量化交易系统配置文件
+
+# MT5 连接配置
+mt5:
+  connection_mode: python_api  # python_api=官方MetaTrader5 Python API；zeromq=EA+ZeroMQ桥接
+  host: localhost              # MT5终端IP地址
+  pub_port: 5555              # 行情发布端口 (PUB/SUB)
+  req_port: 5556              # 交易指令端口 (REQ/REP)
+  heartbeat_interval: 5       # 心跳检测间隔(秒)
+  auto_reconnect: true        # 自动重连
+  python_api:
+    terminal_path: ""          # 可选：terminal64.exe 完整路径；留空则使用已安装/已打开的MT5
+    login: null                # 可选：实盘/模拟账号；也可先在MT5终端手动登录
+    password_env: MT5_PASSWORD # 密码只从环境变量读取，不写入配置文件
+    server: ""                 # 经纪商服务器名，例如 Broker-Live
+    symbols: [EURUSD]          # 需要轮询行情的品种
+    poll_interval: 1.0         # 行情轮询间隔，秒
+    timeout: 60000             # 连接超时，毫秒
+    portable: false
+    deviation: 20              # 下单最大滑点，点
+    magic: 20260517            # Python策略订单标识
+    fill_policy: auto          # auto/fok/ioc/return
+
+# 交易配置
+trading:
+  symbol: EURUSD              # 默认交易品种（向后兼容）
+  timeframe: H1               # 时间周期（向后兼容）
+  min_confidence: 0.6         # 最小信号信心度
+  enable_llm: false           # 是否启用LLM分析
+  max_spread_points: 10       # 最大允许点差
+
+  # 安全开关（默认关闭真实交易）
+  live_trading: false         # 是否允许真实交易（false=仅模拟）
+  dry_run: true               # true=只记录日志不发送订单
+  max_lot_size: 0.1           # 最大允许手数
+  signal_cooldown_seconds: 300 # 同一品种信号冷却期(秒)
+
+  # 多品种配置（Phase 2新增）
+  multi_symbol:
+    enabled: true             # 是否启用多品种管理
+    global_max_positions: 5   # 全局最大持仓数
+    symbols:
+      - symbol: EURUSD
+        timeframe: H1
+        weight: 1.0
+        enabled: true
+        min_confidence: 0.6
+        max_positions: 1
+      - symbol: GBPUSD
+        timeframe: H1
+        weight: 0.8
+        enabled: true
+        min_confidence: 0.65
+        max_positions: 1
+      - symbol: USDJPY
+        timeframe: H1
+        weight: 0.8
+        enabled: true
+        min_confidence: 0.65
+        max_positions: 1
+      - symbol: XAUUSD
+        timeframe: H1
+        weight: 0.5
+        enabled: true
+        min_confidence: 0.7
+        max_positions: 1
+
+  # 信号评分配置（Phase 2新增）
+  signal_scoring:
+    enabled: true             # 是否启用信号评分
+    max_history: 10000        # 最大信号历史记录数
+    auto_export_report: true  # 是否自动导出绩效报告
+    report_interval_hours: 24 # 报告导出间隔
+
+# 风险控制配置
+risk:
+  max_risk_per_trade: 0.02    # 单笔交易最大风险(账户比例)
+  max_risk_per_day: 0.06      # 单日最大风险(账户比例)
+  max_drawdown: 0.10          # 最大回撤限制
+  max_positions: 5            # 最大同时持仓数
+  min_risk_reward: 1.5        # 最小风险回报比
+  use_atr_stop: true          # 使用ATR动态止损
+  atr_multiplier: 2.0         # ATR止损倍数
+  
+  # 安全硬限制
+  hard_max_lot_size: 0.1      # 绝对最大手数（不可通过配置覆盖）
+  require_live_trading: true  # 下单前是否强制检查 live_trading
+
+# LLM AI配置
+llm:
+  provider: openai            # AI提供商: openai/anthropic
+  model: gpt-4                # 模型名称
+  api_key: ""                 # API密钥(建议通过环境变量设置)
+  max_tokens: 1000            # 最大token数
+  temperature: 0.3            # 温度参数
+  analysis_interval: 300      # 分析间隔(秒)
+
+# 监控告警配置
+monitoring:
+  alert_cooldown: 300         # 告警冷却时间(秒)
+  risk_check_interval: 60     # 风险检查间隔(秒)
+  equity_update_interval: 1   # 权益更新间隔(秒)
+  
+  # 告警阈值
+  thresholds:
+    max_drawdown: 0.10        # 最大回撤告警
+    daily_loss: 0.05          # 单日亏损告警
+    var_95: 0.03              # VaR告警
+    margin_level: 1.5         # 保证金水平告警
+    consecutive_losses: 5     # 连续亏损告警
+
+# 回测配置
+backtest:
+  initial_balance: 10000      # 初始资金
+  commission: 0.0001          # 手续费比例
+  spread: 0.0002              # 点差
+  slippage: 0.0001            # 滑点
+  data_source: mt5            # 数据源: mt5/csv
+
+# 日志配置
+logging:
+  level: INFO                 # 日志级别
+  file: logs/trading.log      # 日志文件
+  max_size: 10485760          # 最大文件大小(10MB)
+  backup_count: 5             # 备份数量
+
+# 数据存储配置
+data:
+  historical_path: data/historical  # 历史数据路径
+  model_path: data/models           # 模型保存路径
+  save_ticks: true                  # 是否保存tick数据

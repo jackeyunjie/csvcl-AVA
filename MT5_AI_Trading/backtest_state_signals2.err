@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "D:\qoder\csvcl - AVA\MT5_AI_Trading\backtest_state_signals.py", line 253, in <module>
+    main()
+  File "D:\qoder\csvcl - AVA\MT5_AI_Trading\backtest_state_signals.py", line 238, in main
+    conn = duckdb.connect("data/h1_state.duckdb")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_duckdb.IOException: IO Error: Cannot open file "\\?\D:\qoder\csvcl - AVA\MT5_AI_Trading\data\h1_state.duckdb": 另一个程序正在使用此文件，进程无法访问。
+
+File is already open in 
+C:\Users\MECHREVO\AppData\Local\Programs\Python\Python312\python.exe (PID 29540)

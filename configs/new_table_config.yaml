@@ -1,0 +1,109 @@
+# 新表格数据处理配置文件示例
+# 展示如何处理不同类型的表格数据
+
+# 基本信息
+name: "新表格数据处理系统"
+version: "1.0"
+description: "处理新类型的数据表格"
+
+# 文件筛选配置
+file_selection:
+  # 不同的文件名匹配模式
+  pattern: "NewTable_*"
+  # 不同的时间限制
+  time_limit_minutes: 15
+  # 不同的搜索路径
+  search_paths:
+    - "D:\\NewTableData"
+    - "C:\\Data\\Tables"
+  file_extensions: [".csv", ".xlsx"]
+
+# 数据处理配置
+data_processing:
+  # 不同的目标区域
+  target_range: "B1:F50"
+  # 不同的截图区域
+  screenshot_range: "A1:H50"
+  # 不同的列宽设置
+  column_width:
+    default: 15
+    special_columns:
+      A: 20
+      C: 25
+
+# 不同的颜色标记规则
+color_rules:
+  blue:
+    values: [10, 20, 30]
+    background_color: "FF0000FF"  # 蓝色背景
+    font_color: "FFFFFFFF"        # 白色字体
+  red:
+    values: [5, 15, 25]
+    background_color: "FFFF0000"  # 红色背景
+    font_color: "FFFFFFFF"        # 白色字体
+  orange:
+    values: [100]
+    background_color: "FFFF8000"  # 橙色背景
+    font_color: "FF000000"        # 黑色字体
+
+# 不同的数据分析配置
+analysis:
+  # 使用自定义分析器
+  analyzer_type: "custom_analyzer"
+  rules:
+    # 每2行为一组
+    rows_per_group: 2
+    row_meanings: ["current", "previous"]
+    # 监控不同的重要数值
+    important_values: [10, 20, -10, -20]
+    # 分析不同的列
+    analysis_columns: ["B", "C", "D"]
+    column_names: ["指标1", "指标2", "指标3"]
+    # 自定义分析逻辑参数
+    custom_params:
+      threshold: 0.05  # 5%变化阈值
+      comparison_type: "percentage"  # 百分比比较
+
+# 图片生成配置
+image_generation:
+  format: "png"  # 使用PNG格式
+  quality: 100
+  size:
+    width: 1200
+    height: 800
+  include_borders: true
+  header_style:
+    background_color: [240, 240, 240]  # 更浅的灰色
+    font_color: [0, 0, 0]
+    font_size: 12
+
+# 邮件发送配置
+email:
+  enabled: true
+  # 不同的发送时间
+  send_times:
+    start_time: "09:00"
+    end_time: "18:00"
+  # 不同的收件人
+  recipients:
+    - "user1@company.com"
+    - "user2@company.com"
+  subject_template: "新表格数据报告 - {date}"
+  template_file: "templates/default_email.html"
+  attachments:
+    include_excel: true
+    include_screenshot: true
+    embed_images: false  # 图片作为附件
+
+# 输出文件配置
+output:
+  excel_suffix: "_NewTable_processed.xlsx"
+  screenshot_suffix: "_NewTable_report.png"
+  output_directory: "output"
+  keep_temp_files: true
+
+# 日志配置
+logging:
+  level: "DEBUG"
+  format: "%(asctime)s - [%(name)s] - %(levelname)s - %(message)s"
+  file: "logs/new_table_processor.log"

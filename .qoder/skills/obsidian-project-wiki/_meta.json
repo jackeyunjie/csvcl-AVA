@@ -1,0 +1,9 @@
+{
+  "name": "obsidian-project-wiki",
+  "version": "1.1.0",
+  "description": "为任意项目搭建 Obsidian + AI 的“会进化”的项目知识库。",
+  "author": "jackeyunjie",
+  "repo": "https://github.com/jackeyunjie/obsidian-project-wiki",
+  "tags": ["obsidian", "knowledge-base", "project-management", "ai-agent", "wiki"],
+  "license": "MIT"
+}
