@@ -14,7 +14,7 @@ file_selection:
   time_limit_minutes: 10
   # 搜索路径
   search_paths:
-    - "C:\\Users\\MECHREVO\\AppData\\Roaming\\MetaQuotes\\Terminal\\50D8083188871EAB17316B22F188CFF7\\MQL4\\Files"
+    - "C:\\Users\\MECHREVO\\AppData\\Roaming\\MetaQuotes\\Terminal\\1F7FB83FCE28CDC848B46CF4612D1D35\\MQL4\\Files"
     - "D:\\MT4Data"  # 备用路径
   # 文件扩展名
   file_extensions: [".csv"]

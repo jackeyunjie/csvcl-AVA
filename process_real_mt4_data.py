@@ -15,6 +15,7 @@ from openpyxl.styles import PatternFill, Font
 from openpyxl.utils.dataframe import dataframe_to_rows
 from PIL import Image, ImageDraw, ImageFont
 from email_sender import EmailSender
+from core.env_config import get_mt4_files_path, get_recipients
 
 class RealMT4DataProcessor:
     def __init__(self, mt4_path=None, target_string="KVBt_@_D1", time_limit_minutes=10, enable_email=False, recipients=None):
@@ -28,18 +29,18 @@ class RealMT4DataProcessor:
             enable_email (bool): 是否启用邮件发送
             recipients (list): 收件人邮箱列表
         """
-        # 默认MT4路径
+        # 默认 MT4 路径从环境变量 / YAML 配置读取，避免硬编码
         if mt4_path is None:
-            self.mt4_path = r"C:\Users\MECHREVO\AppData\Roaming\MetaQuotes\Terminal\50D8083188871EAB17316B22F188CFF7\MQL4\Files"
+            self.mt4_path = get_mt4_files_path()
         else:
             self.mt4_path = mt4_path
-            
+
         self.target_string = target_string
         self.time_limit_minutes = time_limit_minutes
         self.enable_email = enable_email
-        # 默认收件人配置：447372703@qq.com 和 1300893414@qq.com
+        # 默认收件人从环境变量 / YAML 配置读取
         if recipients is None:
-            self.recipients = ["447372703@qq.com", "1300893414@qq.com"]
+            self.recipients = get_recipients(default=["447372703@qq.com", "1300893414@qq.com"])
         else:
             self.recipients = recipients
         

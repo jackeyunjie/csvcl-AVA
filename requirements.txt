@@ -1,4 +1,30 @@
-pandas>=1.3.0
-openpyxl>=3.0.0
-Pillow>=8.0.0
+# Core data & Excel
+pandas>=2.0.0
+openpyxl>=3.1.0
+Pillow>=10.0.0
+numpy>=1.24.0
+
+# Scheduling & configuration
 schedule>=1.2.0
+pyyaml>=6.0
+python-dotenv>=1.0.0
+
+# Visualization
+matplotlib>=3.7.0
+plotly>=5.18.0
+
+# Web / YouTube research
+requests>=2.31.0
+beautifulsoup4>=4.12.0
+markdownify>=0.11.0
+youtube-transcript-api>=0.6.0
+
+# MT5 / messaging (optional, Windows only)
+MetaTrader5>=5.0.45
+pyzmq>=25.0.0
+
+# Database (optional)
+duckdb>=0.9.0
+
+# Testing
+pytest>=7.4.0

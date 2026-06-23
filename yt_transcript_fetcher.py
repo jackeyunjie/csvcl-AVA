@@ -1,11 +1,14 @@
 from youtube_transcript_api import YouTubeTranscriptApi
 import re, os, sys, time
+from core.env_config import get_wiki_research_dir
 
 def get_video_id(url):
     m = re.search(r'[?&]v=([^&]+)', url)
     return m.group(1) if m else url
 
-def fetch_transcript(url, index=None, out_dir=r'D:\qoder\csvcl - AVA\docs\project-wiki\raw\research'):
+def fetch_transcript(url, index=None, out_dir=None):
+    if out_dir is None:
+        out_dir = get_wiki_research_dir()
     vid = get_video_id(url)
     api = YouTubeTranscriptApi()
     langs = ('zh-Hans','zh-Hant','en')

@@ -7,12 +7,13 @@
 
 from datetime import datetime, time
 from process_real_mt4_data import RealMT4DataProcessor
+from core.env_config import get_recipients
 
-# 邮件发送配置
-EMAIL_RECIPIENTS = [
+# 邮件发送配置（优先从环境变量 / YAML 配置读取）
+EMAIL_RECIPIENTS = get_recipients(default=[
     "447372703@qq.com",
     "1300893414@qq.com"
-]
+])
 
 # 发送时间配置（7:00-22:00）
 SEND_TIME_START = time(7, 0)   # 7:00
@@ -72,8 +73,8 @@ def run_auto_email_system():
     print("🚀 === 自动邮件发送系统启动 ===\n")
     
     print("📋 配置信息:")
-    print(f"   📮 收件人1: 447372703@qq.com")
-    print(f"   📮 收件人2: 1300893414@qq.com")
+    for idx, recipient in enumerate(EMAIL_RECIPIENTS, start=1):
+        print(f"   📮 收件人{idx}: {recipient}")
     print(f"   ⏰ 发送时段: 7:00-22:00")
     print(f"   📂 处理文件: 包含'KVBt_@_D1'的MT4数据")
     print()

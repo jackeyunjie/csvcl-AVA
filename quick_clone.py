@@ -26,8 +26,9 @@ def create_new_processor():
     if not email:
         email = "test@example.com"
     
-    # 2. 创建新目录
-    new_dir = f"d:\\qoder\\{name}"
+    # 2. 创建新目录（可通过环境变量 QUICK_CLONE_BASE_DIR 指定基目录，默认为当前目录）
+    base_dir = os.environ.get("QUICK_CLONE_BASE_DIR", os.getcwd())
+    new_dir = os.path.join(base_dir, name)
     if os.path.exists(new_dir):
         print(f"⚠️ 目录已存在: {new_dir}")
         return

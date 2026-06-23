@@ -6,6 +6,7 @@ MT4文件颜色标记 - 简化版本
 """
 
 from csv_color_marker import CSVColorMarker
+from core.env_config import get_mt4_files_path
 
 def main():
     """
@@ -13,9 +14,9 @@ def main():
     """
     print("=== MT4 CSV文件颜色标记程序 ===")
     
-    # 使用预设的MT4路径和参数
+    # 使用环境变量 / YAML 配置中的 MT4 路径，避免硬编码
     marker = CSVColorMarker(
-        search_path=r"C:\Users\MECHREVO\AppData\Roaming\MetaQuotes\Terminal\50D8083188871EAB17316B22F188CFF7\MQL4\Files",
+        search_path=get_mt4_files_path(),
         target_string="KVBt_@_D1",
         time_limit_minutes=7
     )

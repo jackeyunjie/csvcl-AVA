@@ -19,6 +19,7 @@ import argparse
 import sys
 from PIL import Image, ImageDraw, ImageFont
 import io
+from core.env_config import get_mt4_files_path
 
 class CSVColorMarker:
     def __init__(self, search_path=None, target_string="KVBt_@_D1", time_limit_minutes=5):
@@ -30,9 +31,9 @@ class CSVColorMarker:
             target_string (str): 目标字符串，文件名需包含此字符串
             time_limit_minutes (int): 时间限制（分钟），默认7分钟
         """
-        # 默认路径为MT4的Files目录
+        # 默认路径从环境变量 / YAML 配置读取，避免硬编码
         if search_path is None:
-            self.search_path = r"C:\Users\MECHREVO\AppData\Roaming\MetaQuotes\Terminal\50D8083188871EAB17316B22F188CFF7\MQL4\Files"
+            self.search_path = get_mt4_files_path()
         else:
             self.search_path = search_path
             

@@ -42,8 +42,24 @@ C:\Users\MECHREVO\AppData\Roaming\MetaQuotes\Terminal\
   1F7FB83FCE28CDC848B46CF4612D1D35\MQL4\Files
 ```
 
-> 注意：程序默认路径 `50D8083188871EAB17316B22F188CFF7` 已不匹配真实数据目录，
-> `auto_email_config.py` 如需自动运行，应更新为上述路径。
+### 配置方式（已消除硬编码）
+
+核心脚本（`csv_color_marker.py`、`process_real_mt4_data.py`、`run_mt4_marker.py`、`auto_email_config.py`）已移除硬编码 MT4 路径与默认收件人，按以下优先级读取：
+
+1. **环境变量**：`.env` 中的 `MT4_FILES_PATH`、`EMAIL_RECIPIENTS` 等。
+2. **YAML 配置**：`configs/mt4_config.yaml` 中的 `file_selection.search_paths`、`email.recipients`。
+3. **命令行参数**：如 `--path`、`--recipients`。
+4. **代码默认值**：最后保留少量兜底默认值，便于首次体验。
+
+快速配置：
+
+```bash
+cp .env.example .env
+# 编辑 .env 填写 MT4_FILES_PATH 与邮箱信息
+```
+
+> 注意：旧的硬编码 Terminal ID `50D8083188871EAB17316B22F188CFF7` 已被移除，
+> `configs/mt4_config.yaml` 中的默认路径已更新为 `1F7FB83FCE28CDC848B46CF4612D1D35`。
 
 ### 文件名模式
 
