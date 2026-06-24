@@ -94,6 +94,7 @@ AND Close < SMA(13)
 - [[mql5-kline-patterns]]
 - [[sqx-module-mapping-impulse-macd]]
 - [[sqx-module-mapping-hong-inki-theme-momentum]]
+- [[sqx-module-mapping-vegas-tunnel-system]]
 
 ## 来源
 
